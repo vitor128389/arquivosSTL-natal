@@ -98,8 +98,9 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 <main id="main"></main>
 </div>
 </div>
-<script src="itens.js"></script>
+<script src="/membros/itens.js?v=3"></script>
 <script>
+window.CATEGORIAS=window.CATEGORIAS||[];window.ITENS=window.ITENS||[];
 var PAGES=[['comece','📌','Comece aqui'],['guia','🎓','Guia do Iniciante'],['arquivos','📦','Arquivos STL'],['calc','🧮','Calculadora'],['painel','📈','Painel de vendas'],['bonus','🎁','Bônus'],['licenca','🛡️','Licença de uso'],['suporte','✉️','Suporte']];
 var SUP='digitalsuporte38@gmail.com';
 function $(s){return document.querySelector(s)}
@@ -137,7 +138,7 @@ V.arquivos=function(){
  return head('Biblioteca','Arquivos STL','Escolha uma categoria. Novos modelos entram aos poucos.','<input class="search" id="qg" placeholder="Buscar modelo..." oninput="buscaGeral()">')+
  '<div id="busca"></div><div class="cats" id="cats">'+CATEGORIAS.map(function(c){var n=cnt(c.id);return '<div class="cat'+(n?'':' vazia')+'" '+(n?'onclick="catAtual=\''+c.id+'\';go(\'arquivos\')"':'')+'><div class="e">'+c.ico+'</div><h3>'+c.nome+'</h3><small>'+(n?n+' arquivo(s)':'Em breve')+'</small></div>'}).join('')+'</div>'};
 function card(i){var href=i.link||dl('arquivos/'+i.arq);var at=i.link?' target="_blank" rel="noopener"':'';
- return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>⬇ Baixar arquivo</a></div></div>'}
+ return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>⬇ Baixar arquivo</a></div></div>'}
 function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'})}
 function buscaGeral(){var q=$('#qg').value.toLowerCase().trim();var b=$('#busca');if(!q){b.innerHTML='';$('#cats').style.display='';return}
  var r=ITENS.filter(function(i){return i.nome.toLowerCase().indexOf(q)>-1});$('#cats').style.display='none';
