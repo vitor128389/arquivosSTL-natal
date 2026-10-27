@@ -49,15 +49,15 @@ label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 .cat:hover{border-color:var(--or);transform:translateY(-2px)}
 .cat .e{font-size:28px}.cat h3{font-size:16px;margin:8px 0 2px}.cat small{color:var(--mut)}
 .cat.vazia{opacity:.5;cursor:default}.cat.vazia:hover{transform:none;border-color:var(--line)}
-.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px}
 .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.item img{width:100%;aspect-ratio:1;object-fit:cover;background:#222;display:block}
+.item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#222;display:block}
 .item .b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
 .tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .tag{background:var(--or);color:#1a0d02;font-weight:700;font-size:11px;border-radius:999px;padding:2px 9px}
 .ver{color:var(--ok);font-weight:700;font-size:11px;letter-spacing:.5px}
 .item h3{font-size:15px}.item p{color:var(--mut);font-size:12px}
-.item .btn{margin-top:auto;width:100%}
+.item .btn{margin-top:auto;width:100%;text-align:center}
 .bar{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
 .search{max-width:280px}
 .res{font-size:14px}.res .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
@@ -117,7 +117,7 @@ V.comece=function(){return head('Leia antes de começar','Bem-vindo! 👋','1 mi
 '<div class="grid g3" style="margin-top:14px"><div class="mini"><h3>✅ O que você recebe</h3><ul><li>Arquivos organizados por categoria</li><li>Guia do arquivo à peça pronta</li><li>Calculadora de custo e preço</li><li>Painel para anotar suas vendas</li></ul></div>'+
 '<div class="mini"><h3>🖥️ Do que você precisa</h3><ul><li>Uma impressora 3D (qualquer FDM)</li><li>Um computador para abrir os arquivos</li><li>Um fatiador gratuito (Bambu Studio, OrcaSlicer, Cura...)</li></ul></div>'+
 '<div class="mini"><h3>💡 Dica</h3><ul><li>Comece pelas peças pequenas e planas</li><li>Imprima amostras e tire fotos</li><li>Divulgue antes de dezembro</li></ul></div></div></div>'+
-'<div class="box"><div class="eyebrow">O que você já tem nas mãos</div><div class="grid g4" style="margin-top:8px"><div class="stat"><b>'+ITENS.length+'</b><span>modelos liberados até agora</span></div><div class="stat"><b>'+CATEGORIAS.filter(function(c){return cnt(c.id)}).length+'</b><span>categorias com arquivos</span></div><div class="stat"><b>∞</b><span>acesso vitalício</span></div><div class="stat"><b>2</b><span>ferramentas: calculadora e painel</span></div></div>'+
+'<div class="box"><div class="eyebrow">O que você já tem nas mãos</div><div class="grid g4" style="margin-top:8px"><div class="stat"><b>'+ITENS.length+'</b><span>modelos liberados até agora</span></div><div class="stat"><b>ZIP</b><span>pronto pra extrair e fatiar</span></div><div class="stat"><b>∞</b><span>acesso vitalício</span></div><div class="stat"><b>2</b><span>ferramentas: calculadora e painel</span></div></div>'+
 '<p class="hint" style="margin-top:10px">Novos modelos são adicionados aos poucos. Volte aqui de vez em quando.</p></div>'+
 '<div class="box"><div class="eyebrow">Sua primeira vitória hoje</div><h2>Faça isso nas próximas 24 horas</h2><ol class="steps"><li>Abra <b>Arquivos STL</b> e escolha 3 peças pequenas.</li><li>Imprima a primeira e anote o peso e o tempo na <b>Calculadora</b>.</li><li>Tire uma foto bonita da peça com fundo limpo e luz natural.</li><li>Poste no Instagram ou no status do WhatsApp com o preço.</li><li>Anote cada venda no <b>Painel de vendas</b>.</li></ol><div style="margin-top:14px"><a class="btn" href="#arquivos">Ver os arquivos</a></div></div>'};
 
@@ -131,14 +131,11 @@ V.guia=function(){return head('Guia do Iniciante','Do arquivo à peça pronta �
 
 var catAtual=null;
 V.arquivos=function(){
- if(catAtual){var c=CATEGORIAS.filter(function(x){return x.id===catAtual})[0];var its=ITENS.filter(function(i){return i.cat===catAtual});
-  return head('Biblioteca','Arquivos STL','Modelos organizados por categoria, prontos para fatiar.','<input class="search" id="q" placeholder="Buscar nesta categoria..." oninput="filtra()">')+
-  '<div class="bar"><button class="btn ghost" onclick="catAtual=null;go(\'arquivos\')">← Voltar às categorias</button><h2 style="font-size:22px">'+c.ico+' '+c.nome+' <small style="color:var(--mut);font-size:14px">'+its.length+' arquivo(s)</small></h2></div>'+
-  '<div class="items" id="its">'+its.map(card).join('')+'</div>'+(its.length?'':'<div class="box">Em breve novos modelos nesta categoria.</div>')}
- return head('Biblioteca','Arquivos STL','Escolha uma categoria. Novos modelos entram aos poucos.','<input class="search" id="qg" placeholder="Buscar modelo..." oninput="buscaGeral()">')+
- '<div id="busca"></div><div class="cats" id="cats">'+CATEGORIAS.map(function(c){var n=cnt(c.id);return '<div class="cat'+(n?'':' vazia')+'" '+(n?'onclick="catAtual=\''+c.id+'\';go(\'arquivos\')"':'')+'><div class="e">'+c.ico+'</div><h3>'+c.nome+'</h3><small>'+(n?n+' arquivo(s)':'Em breve')+'</small></div>'}).join('')+'</div>'};
+ return head('Biblioteca','Arquivos STL','Modelos de Natal prontos pra fatiar. Novos arquivos entram aos poucos.','<input class="search" id="q" placeholder="Buscar modelo..." oninput="filtra()">')+
+ '<div class="box hl" style="display:flex;align-items:center;gap:14px;padding:16px 18px"><div style="font-size:26px">🎄</div><div><h3 style="margin:0">Natal <small style="color:var(--mut);font-weight:400">'+ITENS.length+' arquivo(s)</small></h3><p style="color:var(--mut);font-size:13px">Clique em <b>Acesso ao arquivo</b> para baixar o ZIP. Depois extraia e abra no seu fatiador.</p></div></div>'+
+ '<div class="items" id="its">'+ITENS.map(card).join('')+'</div>'+(ITENS.length?'':'<div class="box">Em breve novos modelos.</div>')};
 function card(i){var href=i.link||dl('arquivos/'+i.arq);var at=i.link?' target="_blank" rel="noopener"':'';
- return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>⬇ Baixar arquivo</a></div></div>'}
+ return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>Acesso ao arquivo</a></div></div>'}
 function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'})}
 function buscaGeral(){var q=$('#qg').value.toLowerCase().trim();var b=$('#busca');if(!q){b.innerHTML='';$('#cats').style.display='';return}
  var r=ITENS.filter(function(i){return i.nome.toLowerCase().indexOf(q)>-1});$('#cats').style.display='none';
@@ -190,7 +187,7 @@ V.suporte=function(){return head('Suporte','Precisa de ajuda? ✉️','A gente r
 
 function go(p){location.hash=p;render()}
 function render(){var p=(location.hash||'#comece').slice(1);if(!V[p])p='comece';
- $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="'+(x[0]==='arquivos'?'catAtual=null;':'')+'$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
+ $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
  $('#main').innerHTML=V[p]();window.scrollTo(0,0)}
 var API='https://skpmowhjzlosnoyzlsnz.supabase.co/functions/v1/membros';
 var UPGRADE='https://pay.wiapy.com/JiqZrpMi9Mhs';
