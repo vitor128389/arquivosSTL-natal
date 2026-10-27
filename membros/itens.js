@@ -1,7 +1,7 @@
 /* ===== LISTA DE MODELOS =====
    Para adicionar: copie uma linha e troque os dados.
    cat   = id da categoria (veja CATEGORIAS)
-   arq   = arquivo dentro de membros/arquivos/  (ou use link: "https://drive..." )
+   arq   = arquivo guardado no Supabase (pasta arquivos/, protegido por login) — ou use link: "https://drive..."
    foto  = imagem dentro de membros/fotos/
    novo  = true mostra a etiqueta NOVO
 */

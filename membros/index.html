@@ -66,6 +66,13 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.tabs button{background:#1c1c21;border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 16px;font-family:inherit;cursor:pointer}
 .tabs button.on{background:var(--or);color:#1a0d02;border-color:var(--or);font-weight:700}
 .prog{height:10px;background:#26262c;border-radius:99px;overflow:hidden;margin:10px 0}.prog i{display:block;height:100%;background:var(--or)}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login .card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px}
+.login h1{font-size:26px;margin:14px 0 6px}.login p{color:var(--mut)}
+.login .btn{width:100%;margin-top:12px;padding:14px;font-size:15px}
+.err{color:#fca5a5;font-size:14px;margin-top:10px;min-height:20px}
+.lock{opacity:.55}
+.btn.wa{background:#22c55e;color:#062b12}
 .top{display:none}
 @media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
 @media(max-width:760px){
@@ -79,14 +86,17 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 </style>
 </head>
 <body>
+<div id="login" class="login" style="display:none"></div>
+<div id="app" style="display:none">
 <div class="top"><button onclick="menu()" aria-label="Menu">☰</button><div class="brand" style="padding:0">NATAL <span>3D</span></div></div>
 <div class="app">
 <aside id="side">
   <div class="brand">NATAL <span>3D</span></div>
   <nav id="nav"></nav>
-  <div class="side-foot">Área de membros<br>+1000 Arquivos STL de Natal</div>
+  <div class="side-foot"><div id="quem" style="word-break:break-all"></div><a href="#" onclick="sair();return false" style="color:var(--or);font-weight:600">Sair</a></div>
 </aside>
 <main id="main"></main>
+</div>
 </div>
 <script src="itens.js"></script>
 <script>
@@ -126,8 +136,8 @@ V.arquivos=function(){
   '<div class="items" id="its">'+its.map(card).join('')+'</div>'+(its.length?'':'<div class="box">Em breve novos modelos nesta categoria.</div>')}
  return head('Biblioteca','Arquivos STL','Escolha uma categoria. Novos modelos entram aos poucos.','<input class="search" id="qg" placeholder="Buscar modelo..." oninput="buscaGeral()">')+
  '<div id="busca"></div><div class="cats" id="cats">'+CATEGORIAS.map(function(c){var n=cnt(c.id);return '<div class="cat'+(n?'':' vazia')+'" '+(n?'onclick="catAtual=\''+c.id+'\';go(\'arquivos\')"':'')+'><div class="e">'+c.ico+'</div><h3>'+c.nome+'</h3><small>'+(n?n+' arquivo(s)':'Em breve')+'</small></div>'}).join('')+'</div>'};
-function card(i){var href=i.link||('arquivos/'+i.arq);var dl=i.link?' target="_blank" rel="noopener"':' download';
- return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+dl+'>⬇ Baixar arquivo</a></div></div>'}
+function card(i){var href=i.link||dl('arquivos/'+i.arq);var at=i.link?' target="_blank" rel="noopener"':'';
+ return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>⬇ Baixar arquivo</a></div></div>'}
 function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'})}
 function buscaGeral(){var q=$('#qg').value.toLowerCase().trim();var b=$('#busca');if(!q){b.innerHTML='';$('#cats').style.display='';return}
  var r=ITENS.filter(function(i){return i.nome.toLowerCase().indexOf(q)>-1});$('#cats').style.display='none';
@@ -165,9 +175,9 @@ function addD(){var n=$('#dn').value.trim(),v=parseFloat(String($('#dv').value).
 function del(k,i){var d=dados();d[k].splice(i,1);store('painel',d);go('painel')}
 var apagar=0;function confirmar(){if(apagar){store('painel',{vendas:[],despesas:[],meta:3000});apagar=0;return true}apagar=1;var b=event.target;b.textContent='Clique de novo para confirmar';setTimeout(function(){apagar=0;if(b)b.textContent='Apagar dados'},3000);return false}
 
-V.bonus=function(){return head('Bônus','Seus bônus 🎁','Materiais extras do Pacote Completo.')+
-'<div class="grid g2"><div class="box"><div class="eyebrow">Bônus 1</div><h2>Guia Rápido de Impressão 3D</h2><p style="color:var(--mut)">Configurações por tipo de peça, impressão em 2 cores, pintura das figuras, solução de problemas e como calcular o preço de venda.</p><div style="margin-top:14px"><a class="btn" href="bonus/Guia_Rapido_Impressao_3D_Natal.pdf" download>⬇ Baixar PDF</a></div></div>'+
-'<div class="box"><div class="eyebrow">Bônus 2</div><h2>Catálogo Visual em PDF</h2><p style="color:var(--mut)">As peças com imagem, número e nome, para você achar rápido o arquivo e mostrar aos clientes o que imprime.</p><div style="margin-top:14px"><a class="btn" href="bonus/Catalogo_1000_STL_Natal.pdf" download>⬇ Baixar PDF</a></div></div></div>'};
+V.bonus=function(){if(USER.plano!=='completo')return head('Bônus','Bônus do Pacote Completo 🎁','Seu plano atual é o Básico.')+'<div class="box hl"><h2>🔒 Libere os bônus</h2><p>O Guia Rápido de Impressão 3D e o Catálogo Visual em PDF fazem parte do Pacote Completo, junto com a coleção completa de +1000 arquivos.</p><div style="margin-top:14px"><a class="btn" href="'+UPGRADE+'" target="_blank" rel="noopener">Quero o Pacote Completo</a></div><p class="hint" style="margin-top:8px">Use o mesmo e-mail da sua compra para o acesso ser liberado aqui.</p></div>';return head('Bônus','Seus bônus 🎁','Materiais extras do Pacote Completo.')+
+'<div class="grid g2"><div class="box"><div class="eyebrow">Bônus 1</div><h2>Guia Rápido de Impressão 3D</h2><p style="color:var(--mut)">Configurações por tipo de peça, impressão em 2 cores, pintura das figuras, solução de problemas e como calcular o preço de venda.</p><div style="margin-top:14px"><a class="btn" href="'+dl('bonus/Guia_Rapido_Impressao_3D_Natal.pdf')+'">⬇ Baixar PDF</a></div></div>'+
+'<div class="box"><div class="eyebrow">Bônus 2</div><h2>Catálogo Visual em PDF</h2><p style="color:var(--mut)">As peças com imagem, número e nome, para você achar rápido o arquivo e mostrar aos clientes o que imprime.</p><div style="margin-top:14px"><a class="btn" href="'+dl('bonus/Catalogo_1000_STL_Natal.pdf')+'">⬇ Baixar PDF</a></div></div></div>'};
 
 V.licenca=function(){return head('Licença de uso','O que você pode fazer','Leia uma vez e venda com tranquilidade.')+
 '<div class="grid g2"><div class="box"><h2>✅ Pode</h2><ul style="padding-left:18px"><li>Imprimir as peças quantas vezes quiser</li><li>Vender as peças impressas na sua loja, Instagram, feiras ou sob encomenda</li><li>Personalizar com nomes e cores</li></ul></div><div class="box"><h2>❌ Não pode</h2><ul style="padding-left:18px"><li>Revender, enviar ou compartilhar os arquivos digitais (STL, 3MF, ZIP)</li><li>Colocar os arquivos em grupos, sites ou outros packs</li></ul></div></div>'+
@@ -181,7 +191,24 @@ function go(p){location.hash=p;render()}
 function render(){var p=(location.hash||'#comece').slice(1);if(!V[p])p='comece';
  $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="'+(x[0]==='arquivos'?'catAtual=null;':'')+'$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
  $('#main').innerHTML=V[p]();window.scrollTo(0,0)}
-window.addEventListener('hashchange',render);render();
+var API='https://skpmowhjzlosnoyzlsnz.supabase.co/functions/v1/membros';
+var UPGRADE='https://pay.wiapy.com/JiqZrpMi9Mhs';
+var TOKEN=null,USER={},MEM={};
+function tok(v){try{if(v===undefined)return localStorage.getItem('n3d_tok');if(v===null)localStorage.removeItem('n3d_tok');else localStorage.setItem('n3d_tok',v)}catch(e){if(v===undefined)return MEM.t;MEM.t=v}}
+function dl(f){return API+'/download?f='+encodeURIComponent(f)+'&t='+encodeURIComponent(TOKEN||'')}
+function telaLogin(msg){$('#app').style.display='none';var L=$('#login');L.style.display='flex';
+ L.innerHTML='<div class="card"><div class="brand" style="padding:0">NATAL <span>3D</span></div><div class="eyebrow">Área de membros</div><h1>Acesse sua biblioteca</h1><p>Entre com o e-mail que você usou na compra.</p>'+
+ '<form onsubmit="entrar(event)"><input id="em" type="email" placeholder="seu@email.com" required autocomplete="email" style="margin-top:16px"><button class="btn" id="be">Entrar</button></form><div class="err" id="er">'+(msg||'')+'</div>'+
+ '<p class="hint">🔒 O acesso é liberado automaticamente após a compra.</p><div style="border-top:1px solid var(--line);margin:16px 0 0;padding-top:14px"><b>Comprou e não consegue entrar?</b><p style="font-size:14px;margin:4px 0 10px">Confira se é o mesmo e-mail da compra. Se ainda não der, fale com a gente:</p><a class="btn ghost" style="width:100%" href="mailto:'+SUP+'?subject=Acesso%20%C3%A1rea%20de%20membros%20Natal%203D">✉️ Falar com o suporte</a></div></div>'}
+function entrar(ev){ev.preventDefault();var e=$('#em').value.trim();$('#be').textContent='Entrando...';$('#er').textContent='';
+ fetch(API+'/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e})}).then(function(r){return r.json()}).then(function(d){
+  if(d.ok){TOKEN=d.token;tok(d.token);USER=d;abrir()}else{$('#be').textContent='Entrar';$('#er').textContent=d.erro||'Não foi possível entrar.'}
+ }).catch(function(){$('#be').textContent='Entrar';$('#er').textContent='Sem conexão. Tente de novo.'})}
+function sair(){tok(null);TOKEN=null;USER={};location.hash='';telaLogin()}
+function abrir(){$('#login').style.display='none';$('#app').style.display='';$('#quem').textContent=USER.email+' · plano '+(USER.plano==='completo'?'Completo':'Básico');render()}
+window.addEventListener('hashchange',function(){if(TOKEN)render()});
+(function(){TOKEN=tok();if(!TOKEN){telaLogin();return}
+ fetch(API+'/me',{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){return r.json()}).then(function(d){if(d.ok){USER=d;abrir()}else{tok(null);TOKEN=null;telaLogin('Sua sessão expirou. Entre de novo.')}}).catch(function(){telaLogin('Sem conexão. Tente de novo.')})})();
 </script>
 </body>
 </html>
