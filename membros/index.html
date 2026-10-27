@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Área de Membros · Natal 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f11;--side:#141417;--card:#18181c;--card2:#1e1e23;--line:#2a2a31;--txt:#ececf1;--mut:#9a9aa6;--or:#ff7a1a;--or2:#ffa04d;--ok:#22c55e;--red:#ef4444}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--txt);font-family:Lexend,system-ui,sans-serif;font-size:15px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Poppins,sans-serif;line-height:1.2}
+.app{display:flex;min-height:100vh}
+aside{width:250px;background:var(--side);border-right:1px solid var(--line);padding:22px 14px;position:fixed;inset:0 auto 0 0;display:flex;flex-direction:column;z-index:20;transition:transform .25s}
+.brand{font-family:Poppins;font-weight:800;font-size:21px;padding:0 10px 22px;letter-spacing:-.3px}.brand span{color:var(--or)}
+nav a{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:10px;color:#cfcfd6;font-weight:600;margin-bottom:3px;font-size:15px}
+nav a:hover{background:#1c1c21}
+nav a.on{background:rgba(255,122,26,.13);color:var(--or)}
+nav a .i{width:22px;text-align:center}
+.side-foot{margin-top:auto;border-top:1px solid var(--line);padding:14px 10px 0;font-size:13px;color:var(--mut)}
+main{margin-left:250px;flex:1;padding:36px 34px 60px;max-width:1160px}
+.eyebrow{color:var(--or);font-weight:700;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.ph h1{font-size:30px}.ph p{color:var(--mut);margin-top:4px}
+.ph{margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+.box.hl{border-color:rgba(255,122,26,.55)}
+.box h2{font-size:21px;margin-bottom:10px}.box h3{font-size:16px;margin-bottom:6px}
+.grid{display:grid;gap:12px}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.mini{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.mini ul{padding-left:18px;color:#c9c9d2}.mini li{margin:3px 0}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+.stat b{display:block;font-family:Poppins;font-size:30px;color:var(--or)}.stat span{color:var(--mut);font-size:13px}
+ol.steps{padding-left:20px}ol.steps li{margin:6px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--or);color:#1a0d02;font-weight:700;border:0;border-radius:10px;padding:12px 18px;cursor:pointer;font-family:inherit;font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.btn:hover{background:var(--or2)}
+.btn.ghost{background:#202026;color:var(--txt);border:1px solid var(--line);text-transform:none}
+.tip{background:rgba(255,122,26,.08);border:1px solid rgba(255,122,26,.35);border-radius:12px;padding:12px 14px;color:#e8d6c6;font-size:14px;margin-top:12px}
+input,select{width:100%;background:#202026;border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:12px;font-family:inherit;font-size:15px}
+input:focus,select:focus{outline:none;border-color:var(--or)}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.hint{font-size:12px;color:var(--mut);margin-top:4px}
+.field{margin-bottom:14px}
+.sec-t{color:var(--or);font-weight:700;font-size:12px;letter-spacing:1px;margin:4px 0 12px;text-transform:uppercase}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;transition:.15s}
+.cat:hover{border-color:var(--or);transform:translateY(-2px)}
+.cat .e{font-size:28px}.cat h3{font-size:16px;margin:8px 0 2px}.cat small{color:var(--mut)}
+.cat.vazia{opacity:.5;cursor:default}.cat.vazia:hover{transform:none;border-color:var(--line)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.item img{width:100%;aspect-ratio:1;object-fit:cover;background:#222;display:block}
+.item .b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tag{background:var(--or);color:#1a0d02;font-weight:700;font-size:11px;border-radius:999px;padding:2px 9px}
+.ver{color:var(--ok);font-weight:700;font-size:11px;letter-spacing:.5px}
+.item h3{font-size:15px}.item p{color:var(--mut);font-size:12px}
+.item .btn{margin-top:auto;width:100%}
+.bar{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.search{max-width:280px}
+.res{font-size:14px}.res .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.res .big{font-family:Poppins;font-size:34px;color:var(--ok);margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}
+.tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.tabs button{background:#1c1c21;border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 16px;font-family:inherit;cursor:pointer}
+.tabs button.on{background:var(--or);color:#1a0d02;border-color:var(--or);font-weight:700}
+.prog{height:10px;background:#26262c;border-radius:99px;overflow:hidden;margin:10px 0}.prog i{display:block;height:100%;background:var(--or)}
+.top{display:none}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
+@media(max-width:760px){
+ aside{transform:translateX(-100%)}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}
+ main{margin-left:0;padding:76px 16px 50px}
+ .top{display:flex;position:fixed;top:0;left:0;right:0;height:58px;background:var(--side);border-bottom:1px solid var(--line);align-items:center;gap:12px;padding:0 16px;z-index:15}
+ .top button{background:none;border:0;color:var(--txt);font-size:24px}
+ .g3,.g4{grid-template-columns:1fr}.ph h1{font-size:25px}
+ .items{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="top"><button onclick="menu()" aria-label="Menu">☰</button><div class="brand" style="padding:0">NATAL <span>3D</span></div></div>
+<div class="app">
+<aside id="side">
+  <div class="brand">NATAL <span>3D</span></div>
+  <nav id="nav"></nav>
+  <div class="side-foot">Área de membros<br>+1000 Arquivos STL de Natal</div>
+</aside>
+<main id="main"></main>
+</div>
+<script src="itens.js"></script>
+<script>
+var PAGES=[['comece','📌','Comece aqui'],['guia','🎓','Guia do Iniciante'],['arquivos','📦','Arquivos STL'],['calc','🧮','Calculadora'],['painel','📈','Painel de vendas'],['bonus','🎁','Bônus'],['licenca','🛡️','Licença de uso'],['suporte','✉️','Suporte']];
+var SUP='digitalsuporte38@gmail.com';
+function $(s){return document.querySelector(s)}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function menu(){$('#side').classList.toggle('open')}
+function cnt(id){return ITENS.filter(function(i){return i.cat===id}).length}
+function head(e,t,p,extra){return '<div class="ph"><div><div class="eyebrow">'+e+'</div><h1>'+t+'</h1><p>'+p+'</p></div>'+(extra||'')+'</div>'}
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem('n3d_'+k)||'null');localStorage.setItem('n3d_'+k,JSON.stringify(v))}catch(e){return null}}
+function brl(v){return 'R$ '+(isFinite(v)?v:0).toFixed(2).replace('.',',')}
+
+var V={};
+V.comece=function(){return head('Leia antes de começar','Bem-vindo! 👋','1 minuto de leitura pra você saber o que tem aqui e por onde começar.')+
+'<div class="box hl"><h2>O que tem nesta área</h2><p>Arquivos STL de Natal prontos para imprimir, separados por categoria, mais as ferramentas para você calcular o preço e acompanhar as vendas.</p>'+
+'<div class="grid g3" style="margin-top:14px"><div class="mini"><h3>✅ O que você recebe</h3><ul><li>Arquivos organizados por categoria</li><li>Guia do arquivo à peça pronta</li><li>Calculadora de custo e preço</li><li>Painel para anotar suas vendas</li></ul></div>'+
+'<div class="mini"><h3>🖥️ Do que você precisa</h3><ul><li>Uma impressora 3D (qualquer FDM)</li><li>Um computador para abrir os arquivos</li><li>Um fatiador gratuito (Bambu Studio, OrcaSlicer, Cura...)</li></ul></div>'+
+'<div class="mini"><h3>💡 Dica</h3><ul><li>Comece pelas peças pequenas e planas</li><li>Imprima amostras e tire fotos</li><li>Divulgue antes de dezembro</li></ul></div></div></div>'+
+'<div class="box"><div class="eyebrow">O que você já tem nas mãos</div><div class="grid g4" style="margin-top:8px"><div class="stat"><b>'+ITENS.length+'</b><span>modelos liberados até agora</span></div><div class="stat"><b>'+CATEGORIAS.filter(function(c){return cnt(c.id)}).length+'</b><span>categorias com arquivos</span></div><div class="stat"><b>∞</b><span>acesso vitalício</span></div><div class="stat"><b>2</b><span>ferramentas: calculadora e painel</span></div></div>'+
+'<p class="hint" style="margin-top:10px">Novos modelos são adicionados aos poucos. Volte aqui de vez em quando.</p></div>'+
+'<div class="box"><div class="eyebrow">Sua primeira vitória hoje</div><h2>Faça isso nas próximas 24 horas</h2><ol class="steps"><li>Abra <b>Arquivos STL</b> e escolha 3 peças pequenas.</li><li>Imprima a primeira e anote o peso e o tempo na <b>Calculadora</b>.</li><li>Tire uma foto bonita da peça com fundo limpo e luz natural.</li><li>Poste no Instagram ou no status do WhatsApp com o preço.</li><li>Anote cada venda no <b>Painel de vendas</b>.</li></ol><div style="margin-top:14px"><a class="btn" href="#arquivos">Ver os arquivos</a></div></div>'};
+
+V.guia=function(){return head('Guia do Iniciante','Do arquivo à peça pronta 🎓','Nunca imprimiu um arquivo baixado? Siga na ordem. Leva uns 10 minutos.')+
+'<div class="box"><div class="eyebrow">Passo 1</div><h2>Entenda os arquivos</h2><div class="grid g3"><div class="mini"><h3>📦 .ZIP</h3>Pasta compactada. Clique com o botão direito e em <b>Extrair</b> antes de abrir.</div><div class="mini"><h3>🧊 .STL</h3>O formato da peça. Abre em qualquer fatiador; você escolhe cor e configuração.</div><div class="mini"><h3>🎨 .3MF</h3>Projeto pronto, às vezes com várias peças e cores já organizadas.</div></div><div class="tip">📱 Pelo celular você só baixa. Para imprimir, abra o arquivo num programa no <b>computador</b>.</div></div>'+
+'<div class="box"><div class="eyebrow">Passo 2</div><h2>Instale o programa da sua impressora</h2><p>A impressora não lê o STL direto: antes ele passa por um <b>fatiador</b>, que transforma a peça em camadas. Todos estes são grátis:</p><div class="grid g4" style="margin-top:12px"><div class="mini"><h3>Bambu Lab</h3>Bambu Studio</div><div class="mini"><h3>Creality</h3>Creality Print ou OrcaSlicer</div><div class="mini"><h3>Elegoo, Anycubic, Sovol</h3>OrcaSlicer ou o programa da marca</div><div class="mini"><h3>Prusa e outras</h3>PrusaSlicer ou UltiMaker Cura</div></div></div>'+
+'<div class="box"><div class="eyebrow">Passo 3</div><h2>Primeira impressão, passo a passo</h2><ol class="steps"><li>Baixe e extraia o ZIP.</li><li>Abra o fatiador e arraste o arquivo .STL para dentro.</li><li>Escolha a sua impressora e o filamento (comece com <b>PLA</b>).</li><li>Clique em <b>Fatiar</b>. Veja o tempo e o peso que aparecem.</li><li>Envie para a impressora (Wi-Fi, cartão SD ou cabo) e acompanhe a primeira camada.</li></ol></div>'+
+'<div class="box"><div class="eyebrow">Passo 4</div><h2>Configurações seguras para começar</h2><div class="grid g3"><div class="mini"><h3>Altura de camada</h3>0,2 mm</div><div class="mini"><h3>Paredes</h3>2 a 3</div><div class="mini"><h3>Preenchimento</h3>15% (peças planas) a 20%</div></div><div class="tip">Peças planas (letreiros, enfeites, tags, flocos) imprimem <b>sem suporte</b>. Figuras em pé podem precisar de suporte em algumas partes.</div></div>'+
+'<div class="box"><div class="eyebrow">Passo 5</div><h2>Deu problema? Soluções rápidas</h2><table><tr><th>Problema</th><th>O que fazer</th></tr><tr><td>Peça soltou da mesa</td><td>Limpe a mesa com álcool isopropílico e use borda (brim).</td></tr><tr><td>Fios entre as partes</td><td>Seque o filamento e ative a retração.</td></tr><tr><td>Primeira camada falhando</td><td>Nivele a mesa e confira a altura do bico.</td></tr><tr><td>Peça empenada nas pontas</td><td>Use borda e evite vento ou ar-condicionado perto.</td></tr></table></div>'+
+'<div class="box"><div class="eyebrow">Passo 6</div><h2>Duas cores sem impressora multicor</h2><p>No fatiador, adicione uma <b>pausa na camada</b> em que a cor muda (por exemplo, onde começa o texto). Quando a impressora pausar, troque o filamento e continue. Ótimo para letreiros e enfeites com nome.</p></div>'};
+
+var catAtual=null;
+V.arquivos=function(){
+ if(catAtual){var c=CATEGORIAS.filter(function(x){return x.id===catAtual})[0];var its=ITENS.filter(function(i){return i.cat===catAtual});
+  return head('Biblioteca','Arquivos STL','Modelos organizados por categoria, prontos para fatiar.','<input class="search" id="q" placeholder="Buscar nesta categoria..." oninput="filtra()">')+
+  '<div class="bar"><button class="btn ghost" onclick="catAtual=null;go(\'arquivos\')">← Voltar às categorias</button><h2 style="font-size:22px">'+c.ico+' '+c.nome+' <small style="color:var(--mut);font-size:14px">'+its.length+' arquivo(s)</small></h2></div>'+
+  '<div class="items" id="its">'+its.map(card).join('')+'</div>'+(its.length?'':'<div class="box">Em breve novos modelos nesta categoria.</div>')}
+ return head('Biblioteca','Arquivos STL','Escolha uma categoria. Novos modelos entram aos poucos.','<input class="search" id="qg" placeholder="Buscar modelo..." oninput="buscaGeral()">')+
+ '<div id="busca"></div><div class="cats" id="cats">'+CATEGORIAS.map(function(c){var n=cnt(c.id);return '<div class="cat'+(n?'':' vazia')+'" '+(n?'onclick="catAtual=\''+c.id+'\';go(\'arquivos\')"':'')+'><div class="e">'+c.ico+'</div><h3>'+c.nome+'</h3><small>'+(n?n+' arquivo(s)':'Em breve')+'</small></div>'}).join('')+'</div>'};
+function card(i){var href=i.link||('arquivos/'+i.arq);var dl=i.link?' target="_blank" rel="noopener"':' download';
+ return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+dl+'>⬇ Baixar arquivo</a></div></div>'}
+function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'})}
+function buscaGeral(){var q=$('#qg').value.toLowerCase().trim();var b=$('#busca');if(!q){b.innerHTML='';$('#cats').style.display='';return}
+ var r=ITENS.filter(function(i){return i.nome.toLowerCase().indexOf(q)>-1});$('#cats').style.display='none';
+ b.innerHTML='<p style="margin-bottom:12px;color:var(--mut)">'+r.length+' resultado(s)</p><div class="items">'+r.map(card).join('')+'</div>'}
+
+V.calc=function(){var f=['peso','rolo','tempo','hora','falha','lucro','taxa'];setTimeout(function(){var s=store('calc')||{};f.forEach(function(k){if(s[k]!=null)$('#'+k).value=s[k]});calc()},0);
+ function inp(id,l,ph,h,val){return '<div class="field"><label>'+l+'</label><input id="'+id+'" type="number" step="any" placeholder="'+ph+'" '+(val!=null?'value="'+val+'"':'')+' oninput="calc()"><div class="hint">'+h+'</div></div>'}
+ return head('Ferramenta','Calculadora de Custos','Descubra quanto custa cada peça e por quanto vender.','<button class="btn ghost" onclick="exemplo()">Preencher exemplo (15 g)</button>')+
+ '<div class="grid g2"><div class="box"><div class="sec-t">Filamento (obrigatório)</div><div class="grid g2">'+inp('peso','Peso da peça (g) *','Ex: 15','O peso que o fatiador mostra')+inp('rolo','Preço do rolo 1 kg (R$) *','Ex: 100','Valor pago por 1.000 g')+'</div>'+
+ '<div class="sec-t">Impressora (opcional)</div><div class="grid g2">'+inp('tempo','Tempo de impressão (h)','Ex: 0,7','Duração no fatiador')+inp('hora','Custo da hora (R$/h)','Ex: 0,50','Energia + desgaste')+'</div>'+
+ '<div class="sec-t">Margens</div><div class="grid g2">'+inp('falha','Reserva para falhas (%)','10','Recomendado: 10%',10)+inp('lucro','Lucro desejado (%)','100','Personalizado costuma ser 100% ou mais',100)+'</div>'+inp('taxa','Taxa do marketplace (%)','0','Shopee ≈ 20% · Mercado Livre ≈ 16% · venda direta: 0',0)+'</div>'+
+ '<div class="box"><div class="sec-t">Resultado em tempo real</div><div id="res" class="res"></div></div></div>'};
+function num(id){var v=parseFloat(String($('#'+id).value).replace(',','.'));return isFinite(v)?v:0}
+function calc(){var p=num('peso'),r=num('rolo');var s={};['peso','rolo','tempo','hora','falha','lucro','taxa'].forEach(function(k){s[k]=$('#'+k).value});store('calc',s);
+ if(!p||!r){$('#res').innerHTML='<h3>Aguardando dados da peça</h3><p style="color:var(--mut)">Preencha o peso e o preço do rolo.</p>';return}
+ var fil=p*r/1000,maq=num('tempo')*num('hora'),base=(fil+maq)*(1+num('falha')/100),comLucro=base*(1+num('lucro')/100),t=num('taxa')/100,preco=t<1?comLucro/(1-t):comLucro;
+ $('#res').innerHTML='<div class="row"><span>Filamento</span><b>'+brl(fil)+'</b></div><div class="row"><span>Máquina e energia</span><b>'+brl(maq)+'</b></div><div class="row"><span>Custo com reserva de falhas</span><b>'+brl(base)+'</b></div>'+(t?'<div class="row"><span>Taxa do marketplace</span><b>'+brl(preco*t)+'</b></div>':'')+'<p style="margin-top:14px;color:var(--mut)">Preço sugerido de venda</p><div class="big">'+brl(preco)+'</div><p class="hint">Lucro por peça: '+brl(preco-base-preco*t)+'. Some embalagem e frete se for o caso.</p>'}
+function exemplo(){$('#peso').value=15;$('#rolo').value=100;$('#tempo').value=0.7;$('#hora').value=0.5;calc()}
+
+var aba='vendas';
+function dados(){return store('painel')||{vendas:[],despesas:[],meta:3000}}
+V.painel=function(){var d=dados();var fat=d.vendas.reduce(function(a,v){return a+v.q*v.p},0),un=d.vendas.reduce(function(a,v){return a+(+v.q)},0),desp=d.despesas.reduce(function(a,v){return a+(+v.v)},0),luc=fat-desp,pct=d.meta?Math.min(100,fat/d.meta*100):0;
+ var corpo='';
+ if(aba==='vendas')corpo='<div class="grid g4" style="align-items:end"><div class="field"><label>Peça</label><input id="vn" placeholder="Ex: Enfeite com nome"></div><div class="field"><label>Quantidade</label><input id="vq" type="number" value="1"></div><div class="field"><label>Preço unitário (R$)</label><input id="vp" type="number" step="any" placeholder="Ex: 15"></div><div class="field"><button class="btn" style="width:100%" onclick="addV()">Adicionar venda</button></div></div>'+
+  '<table><tr><th>Data</th><th>Peça</th><th>Qtd</th><th>Total</th><th></th></tr>'+d.vendas.map(function(v,i){return '<tr><td>'+v.d+'</td><td>'+esc(v.n)+'</td><td>'+v.q+'</td><td>'+brl(v.q*v.p)+'</td><td><button class="btn ghost" onclick="del(\'vendas\','+i+')">✕</button></td></tr>'}).join('')+'</table>';
+ if(aba==='despesas')corpo='<div class="grid g3" style="align-items:end"><div class="field"><label>Despesa</label><input id="dn" placeholder="Ex: Rolo PLA vermelho"></div><div class="field"><label>Valor (R$)</label><input id="dv" type="number" step="any"></div><div class="field"><button class="btn" style="width:100%" onclick="addD()">Adicionar despesa</button></div></div>'+
+  '<table><tr><th>Data</th><th>Despesa</th><th>Valor</th><th></th></tr>'+d.despesas.map(function(v,i){return '<tr><td>'+v.d+'</td><td>'+esc(v.n)+'</td><td>'+brl(+v.v)+'</td><td><button class="btn ghost" onclick="del(\'despesas\','+i+')">✕</button></td></tr>'}).join('')+'</table>';
+ if(aba==='meta')corpo='<div class="field" style="max-width:300px"><label>Meta de faturamento do Natal (R$)</label><input id="mt" type="number" value="'+d.meta+'" onchange="var x=dados();x.meta=+this.value;store(\'painel\',x);go(\'painel\')"></div>';
+ return head('Seu negócio','Painel de vendas','Os dados ficam salvos só neste navegador.','<button class="btn ghost" onclick="if(confirmar())go(\'painel\')">Apagar dados</button>')+
+ '<div class="grid g4"><div class="stat"><span>Faturamento</span><b>'+brl(fat)+'</b><span>'+d.vendas.length+' vendas · '+un+' un.</span></div><div class="stat"><span>Despesas</span><b>'+brl(desp)+'</b><span>filamento, embalagem...</span></div><div class="stat"><span>Lucro</span><b style="color:var(--ok)">'+brl(luc)+'</b><span>'+(fat?(luc/fat*100).toFixed(0):0)+'% de margem</span></div><div class="stat"><span>Meta</span><b>'+pct.toFixed(0)+'%</b><span>de '+brl(d.meta)+'</span></div></div>'+
+ '<div class="box" style="margin-top:14px"><div class="prog"><i style="width:'+pct+'%"></i></div><div class="tabs">'+[['vendas','Vendas'],['despesas','Despesas'],['meta','Meta']].map(function(t){return '<button class="'+(aba===t[0]?'on':'')+'" onclick="aba=\''+t[0]+'\';go(\'painel\')">'+t[1]+'</button>'}).join('')+'</div>'+corpo+'</div>'};
+function hoje(){var d=new Date();return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)}
+function addV(){var n=$('#vn').value.trim(),q=+$('#vq').value||1,p=parseFloat(String($('#vp').value).replace(',','.'));if(!n||!isFinite(p))return;var d=dados();d.vendas.unshift({d:hoje(),n:n,q:q,p:p});store('painel',d);go('painel')}
+function addD(){var n=$('#dn').value.trim(),v=parseFloat(String($('#dv').value).replace(',','.'));if(!n||!isFinite(v))return;var d=dados();d.despesas.unshift({d:hoje(),n:n,v:v});store('painel',d);go('painel')}
+function del(k,i){var d=dados();d[k].splice(i,1);store('painel',d);go('painel')}
+var apagar=0;function confirmar(){if(apagar){store('painel',{vendas:[],despesas:[],meta:3000});apagar=0;return true}apagar=1;var b=event.target;b.textContent='Clique de novo para confirmar';setTimeout(function(){apagar=0;if(b)b.textContent='Apagar dados'},3000);return false}
+
+V.bonus=function(){return head('Bônus','Seus bônus 🎁','Materiais extras do Pacote Completo.')+
+'<div class="grid g2"><div class="box"><div class="eyebrow">Bônus 1</div><h2>Guia Rápido de Impressão 3D</h2><p style="color:var(--mut)">Configurações por tipo de peça, impressão em 2 cores, pintura das figuras, solução de problemas e como calcular o preço de venda.</p><div style="margin-top:14px"><a class="btn" href="bonus/Guia_Rapido_Impressao_3D_Natal.pdf" download>⬇ Baixar PDF</a></div></div>'+
+'<div class="box"><div class="eyebrow">Bônus 2</div><h2>Catálogo Visual em PDF</h2><p style="color:var(--mut)">As peças com imagem, número e nome, para você achar rápido o arquivo e mostrar aos clientes o que imprime.</p><div style="margin-top:14px"><a class="btn" href="bonus/Catalogo_1000_STL_Natal.pdf" download>⬇ Baixar PDF</a></div></div></div>'};
+
+V.licenca=function(){return head('Licença de uso','O que você pode fazer','Leia uma vez e venda com tranquilidade.')+
+'<div class="grid g2"><div class="box"><h2>✅ Pode</h2><ul style="padding-left:18px"><li>Imprimir as peças quantas vezes quiser</li><li>Vender as peças impressas na sua loja, Instagram, feiras ou sob encomenda</li><li>Personalizar com nomes e cores</li></ul></div><div class="box"><h2>❌ Não pode</h2><ul style="padding-left:18px"><li>Revender, enviar ou compartilhar os arquivos digitais (STL, 3MF, ZIP)</li><li>Colocar os arquivos em grupos, sites ou outros packs</li></ul></div></div>'+
+'<div class="tip">Quando um modelo tiver uma licença própria do criador, ela vem indicada no card do arquivo e deve ser respeitada.</div>'};
+
+V.suporte=function(){return head('Suporte','Precisa de ajuda? ✉️','A gente responde em até 1 dia útil.')+
+'<div class="box"><h2>Fale com a gente</h2><p>Mande um e-mail para <b>'+SUP+'</b> com o nome do arquivo e, se puder, uma foto do problema.</p><div style="margin-top:14px"><a class="btn" href="mailto:'+SUP+'?subject=Suporte%20Natal%203D">Enviar e-mail</a></div></div>'+
+'<div class="box"><h3>Antes de mandar, confira</h3><ul style="padding-left:18px;color:#c9c9d2"><li>Você extraiu o ZIP antes de abrir? (botão direito → Extrair)</li><li>Está abrindo no computador, num fatiador?</li><li>Veja o <a href="#guia" style="color:var(--or)">Guia do Iniciante</a>, Passo 5.</li></ul></div>'};
+
+function go(p){location.hash=p;render()}
+function render(){var p=(location.hash||'#comece').slice(1);if(!V[p])p='comece';
+ $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="'+(x[0]==='arquivos'?'catAtual=null;':'')+'$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
+ $('#main').innerHTML=V[p]();window.scrollTo(0,0)}
+window.addEventListener('hashchange',render);render();
+</script>
+</body>
+</html>
