@@ -23,6 +23,10 @@ window.CATEGORIAS = [
   {id:'guirlandas', nome:'Guirlandas', ico:'💚'},
 ];
 window.ITENS = [
+  {nome:'Ursinho de Natal de Tricô', cat:'noel', arq:'urso-natal-trico.zip', foto:'urso-natal-trico.webp', info:'1 STL · figura para pintar ou multicor', novo:true},
+  {nome:'Pote de Papai Noel (doces e biscoitos)', cat:'mesa', arq:'pote-papai-noel.zip', foto:'pote-papai-noel.webp', info:'Ótimo para presente e cesta de Natal', novo:true},
+  {nome:'Cortadores de Biscoito de Natal', cat:'cortadores', arq:'cortadores-biscoito-natal.zip', foto:'cortadores-biscoito-natal.webp', info:'Arquivo 3MF · vários formatos', novo:true},
+  {nome:'Enfeite Biscoito de Gengibre com Nome', cat:'nomes', arq:'enfeite-biscoito-nome.zip', foto:'enfeite-biscoito-nome.webp', info:'Personalize com o nome do cliente', novo:true},
   {nome:'Boneco de Neve Articulado (sentado)', cat:'neve', arq:'boneco-neve-articulado.zip', foto:'boneco-neve-articulado.webp', info:'Arquivo 3MF · pernas articuladas', novo:true},
   {nome:'Renas Caneladas Modernas', cat:'renas', arq:'renas-caneladas.zip', foto:'renas-caneladas.webp', info:'Arquivo 3MF · decoração', novo:true},
   {nome:'Casinha de Pinha para Vela', cat:'luminarias', arq:'casinha-pinha-vela.zip', foto:'casinha-pinha-vela.webp', info:'Arquivo 3MF · para vela de LED', novo:true},
