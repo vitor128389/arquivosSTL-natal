@@ -49,6 +49,9 @@ label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 .cat:hover{border-color:var(--or);transform:translateY(-2px)}
 .cat .e{font-size:28px}.cat h3{font-size:16px;margin:8px 0 2px}.cat small{color:var(--mut)}
 .cat.vazia{opacity:.5;cursor:default}.cat.vazia:hover{transform:none;border-color:var(--line)}
+.sec{margin-top:30px}.sec-h h2{font-size:20px;margin:0 0 12px}.sec-h small{color:var(--mut);font-weight:400;font-size:13px}
+.sec .items .item:nth-child(n+13){display:none}.sec.aberta .items .item:nth-child(n+13),body.buscando .sec .items .item:nth-child(n+13){display:flex}
+body.buscando .sec-mais{display:none}.sec-mais{margin:14px auto 0;display:block}
 .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px}
 .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#222;display:block}
@@ -99,8 +102,9 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 </div>
 </div>
 <script src="/membros/itens.js?v=5"></script>
+<script src="/membros/pack.js?v=1"></script>
 <script>
-window.CATEGORIAS=window.CATEGORIAS||[];window.ITENS=window.ITENS||[];
+window.CATEGORIAS=window.CATEGORIAS||[];window.ITENS=window.ITENS||[];window.SECOES=window.SECOES||[];window.PACK=window.PACK||[];
 var PAGES=[['comece','📌','Comece aqui'],['guia','🎓','Guia do Iniciante'],['arquivos','📦','Arquivos STL'],['calc','🧮','Calculadora'],['painel','📈','Painel de vendas'],['bonus','🎁','Bônus'],['licenca','🛡️','Licença de uso'],['suporte','✉️','Suporte']];
 var SUP='digitalsuporte38@gmail.com';
 function $(s){return document.querySelector(s)}
@@ -133,13 +137,18 @@ var catAtual=null;
 V.arquivos=function(){
  return head('Biblioteca','Arquivos STL','Modelos de Natal prontos pra fatiar. Novos arquivos entram aos poucos.','<input class="search" id="q" placeholder="Buscar modelo..." oninput="filtra()">')+
  '<div class="box hl" style="display:flex;align-items:center;gap:14px;padding:16px 18px"><div style="font-size:26px">🎄</div><div><h3 style="margin:0">Natal <small style="color:var(--mut);font-weight:400">'+ITENS.length+' arquivo(s)</small></h3><p style="color:var(--mut);font-size:13px">Clique em <b>Acesso ao arquivo</b> para baixar o ZIP. Depois extraia e abra no seu fatiador.</p></div></div>'+
- '<div class="items" id="its">'+ITENS.map(card).join('')+'</div>'+(ITENS.length?'':'<div class="box">Em breve novos modelos.</div>')};
+ '<div class="items" id="its">'+ITENS.map(card).join('')+'</div>'+(ITENS.length?'':'<div class="box">Em breve novos modelos.</div>')+secoes()};
+function cardP(i){return '<div class="item" data-n="'+esc(i.n.toLowerCase())+'"><img src="/membros/fotos/pack/'+esc(i.f)+'.webp" alt="'+esc(i.n)+'" loading="lazy" style="object-fit:contain;background:#14301f"><div class="b"><div class="tags"><span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.n)+'</h3><a class="btn" href="'+esc(dl('pack/'+i.f+'.zip'))+'">Baixar arquivo</a></div></div>'}
+function secoes(){if(!PACK.length)return '';return SECOES.map(function(s){var its=PACK.filter(function(i){return i.s===s.id});if(!its.length)return '';
+ return '<div class="sec" id="sec-'+s.id+'"><div class="sec-h"><h2>'+s.ico+' '+esc(s.nome)+' <small>'+its.length+' arquivos</small></h2></div><div class="items">'+its.map(cardP).join('')+'</div>'+(its.length>12?'<button class="btn sec-mais" onclick="this.parentNode.classList.add(\'aberta\');this.remove()">Ver todos os '+its.length+'</button>':'')+'</div>'}).join('')}
 function card(i){var href=i.link||dl('arquivos/'+i.arq);var at=i.link?' target="_blank" rel="noopener"':'';
  return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>Acesso ao arquivo</a></div></div>'}
-function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'})}
+function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'});
+ document.body.classList.toggle('buscando',!!q);document.querySelectorAll('.sec').forEach(function(s){var n=0;s.querySelectorAll('.item').forEach(function(e){var ok=e.dataset.n.indexOf(q)>-1;e.style.display=ok?'':'none';if(ok)n++});s.style.display=(q&&!n)?'none':''})}
 function buscaGeral(){var q=$('#qg').value.toLowerCase().trim();var b=$('#busca');if(!q){b.innerHTML='';$('#cats').style.display='';return}
  var r=ITENS.filter(function(i){return i.nome.toLowerCase().indexOf(q)>-1});$('#cats').style.display='none';
- b.innerHTML='<p style="margin-bottom:12px;color:var(--mut)">'+r.length+' resultado(s)</p><div class="items">'+r.map(card).join('')+'</div>'}
+ var rp=PACK.filter(function(i){return i.n.toLowerCase().indexOf(q)>-1});
+ b.innerHTML='<p style="margin-bottom:12px;color:var(--mut)">'+(r.length+rp.length)+' resultado(s)</p><div class="items">'+r.map(card).join('')+rp.slice(0,60).map(cardP).join('')+'</div>'}
 
 V.calc=function(){var f=['peso','rolo','tempo','hora','falha','lucro','taxa'];setTimeout(function(){var s=store('calc')||{};f.forEach(function(k){if(s[k]!=null)$('#'+k).value=s[k]});calc()},0);
  function inp(id,l,ph,h,val){return '<div class="field"><label>'+l+'</label><input id="'+id+'" type="number" step="any" placeholder="'+ph+'" '+(val!=null?'value="'+val+'"':'')+' oninput="calc()"><div class="hint">'+h+'</div></div>'}
