@@ -213,7 +213,7 @@ function render(){var p=(location.hash||'#comece').slice(1);if(!V[p])p='comece';
  $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
  $('#main').innerHTML=V[p]();window.scrollTo(0,0)}
 var API='https://skpmowhjzlosnoyzlsnz.supabase.co/functions/v1/membros';
-var UPGRADE='https://pay.wiapy.com/JiqZrpMi9Mhs';
+var UPGRADE='https://pay.wiapy.com/jRt6lwSTIArQ';
 var TOKEN=null,USER={},MEM={};
 function tok(v){try{if(v===undefined)return localStorage.getItem('n3d_tok');if(v===null)localStorage.removeItem('n3d_tok');else localStorage.setItem('n3d_tok',v)}catch(e){if(v===undefined)return MEM.t;MEM.t=v}}
 function dl(f){return API+'/download?f='+encodeURIComponent(f)+'&t='+encodeURIComponent(TOKEN||'')}
