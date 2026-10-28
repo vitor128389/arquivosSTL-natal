@@ -23,6 +23,12 @@ window.CATEGORIAS = [
   {id:'guirlandas', nome:'Guirlandas', ico:'💚'},
 ];
 window.ITENS = [
+  {nome:'Boneco de Neve Articulado (sentado)', cat:'neve', arq:'boneco-neve-articulado.zip', foto:'boneco-neve-articulado.webp', info:'Arquivo 3MF · pernas articuladas', novo:true},
+  {nome:'Renas Caneladas Modernas', cat:'renas', arq:'renas-caneladas.zip', foto:'renas-caneladas.webp', info:'Arquivo 3MF · decoração', novo:true},
+  {nome:'Casinha de Pinha para Vela', cat:'luminarias', arq:'casinha-pinha-vela.zip', foto:'casinha-pinha-vela.webp', info:'Arquivo 3MF · para vela de LED', novo:true},
+  {nome:'Vila de Casinhas Iluminadas', cat:'luminarias', arq:'vila-casinhas-vela.zip', foto:'vila-casinhas-vela.webp', info:'6 STL · para vela de LED', novo:true},
+  {nome:'Mini Papai Noel com Saco', cat:'noel', arq:'mini-papai-noel-saco.zip', foto:'mini-papai-noel-saco.webp', info:'Peça pequena e rápida', novo:true},
+  {nome:'Bolas de Natal Modernas (8 modelos)', cat:'arvore', arq:'bolas-natal-modernas.zip', foto:'bolas-natal-modernas.webp', info:'8 STL · para pendurar na árvore', novo:true},
   {nome:'Papai Noel de Tricô', cat:'noel', arq:'papai-noel-trico.zip', foto:'papai-noel-trico.webp', info:'Peças separadas por cor · encaixe', novo:true},
   {nome:'Rena de Tricô', cat:'renas', arq:'rena-trico.zip', foto:'rena-trico.webp', info:'Corpo, chifres, olhos e nariz separados', novo:true},
   {nome:'Boneco de Neve de Tricô', cat:'neve', arq:'boneco-neve-trico.zip', foto:'boneco-neve-trico.webp', info:'Gorro, cachecol e corpo separados', novo:true},
