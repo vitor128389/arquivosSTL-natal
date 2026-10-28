@@ -76,6 +76,14 @@ h2{font-weight:900;font-size:clamp(24px,6.4vw,32px);line-height:1.15;margin:8px 
 .hl{margin-top:30px;background:var(--g);color:#fff;border:2px solid var(--gold);border-radius:18px;padding:18px;text-align:center}
 .hl img{margin:6px auto 0}
 .hl p{margin:6px 0 0;color:#d9e8de;font-size:14.5px}
+.vid{background:#0f0f11;color:#fff;padding:56px 0}
+.vid h2{color:#fff;overflow-wrap:break-word}.vid .lbl{color:#ff7a1a}.vid p.sub{color:#b9b9c2;margin:0 auto 22px;max-width:560px;text-align:center}
+.vbox{position:relative;max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;border:3px solid #ff7a1a;box-shadow:0 20px 50px #0008;background:#000}
+.vbox video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(#0000,#0006);border:0;cursor:pointer}
+.vplay span{width:86px;height:86px;border-radius:50%;background:#ff7a1a;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px #ff7a1a88}
+.vplay span:after{content:"";border-left:28px solid #1a0d02;border-top:17px solid transparent;border-bottom:17px solid transparent;margin-left:7px}
+.vplay small{position:absolute;top:calc(50% + 52px);left:0;right:0;text-align:center;color:#fff;font-weight:700;font-size:14px;text-shadow:0 2px 8px #000}
 .cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
 /* bônus */
 .bonus{display:grid;gap:16px;margin-top:22px}
@@ -208,6 +216,18 @@ section+section{border-top:1px solid #f1ece2}
   </div>
 </section>
 
+
+<!-- VÍDEO ÁREA DE MEMBROS -->
+<section class="vid">
+  <div class="w">
+    <div class="center"><div class="lbl">Veja por dentro</div><h2>É isso que você recebe na hora</h2>
+    <p class="sub">Os arquivos com foto, a busca, o download em um clique, a calculadora de preço e o painel de vendas.</p></div>
+    <div class="vbox"><video id="vm" src="img/area-membros.mp4" poster="img/area-membros-poster.jpg" preload="none" playsinline></video>
+    <button class="vplay" id="vp" type="button" aria-label="Assistir ao vídeo"><span></span><small>▶ Assista com som (47 s)</small></button></div>
+    <a class="cta" href="#planos" style="margin-top:26px">Quero meu acesso agora</a>
+  </div>
+</section>
+<script>(function(){var v=document.getElementById('vm'),b=document.getElementById('vp');b.onclick=function(){b.style.display='none';v.controls=true;v.play()};v.addEventListener('play',function(){b.style.display='none';v.controls=true})})();</script>
 
 <!-- CALENDÁRIO -->
 <section>
