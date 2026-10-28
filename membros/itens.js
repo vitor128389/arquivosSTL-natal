@@ -23,5 +23,15 @@ window.CATEGORIAS = [
   {id:'guirlandas', nome:'Guirlandas', ico:'💚'},
 ];
 window.ITENS = [
+  {nome:'Papai Noel de Tricô', cat:'noel', arq:'papai-noel-trico.zip', foto:'papai-noel-trico.webp', info:'Peças separadas por cor · encaixe', novo:true},
+  {nome:'Rena de Tricô', cat:'renas', arq:'rena-trico.zip', foto:'rena-trico.webp', info:'Corpo, chifres, olhos e nariz separados', novo:true},
+  {nome:'Boneco de Neve de Tricô', cat:'neve', arq:'boneco-neve-trico.zip', foto:'boneco-neve-trico.webp', info:'Gorro, cachecol e corpo separados', novo:true},
+  {nome:'Biscoito de Gengibre de Tricô', cat:'mesa', arq:'biscoito-gengibre-trico.zip', foto:'biscoito-gengibre-trico.webp', info:'Peças separadas por cor', novo:true},
+  {nome:'Boneco de Neve com Gorro Marrom', cat:'neve', arq:'boneco-neve-gorro-marrom.zip', foto:'boneco-neve-gorro-marrom.webp', info:'Ideal para multicor (AMS)', novo:true},
+  {nome:'Rena Nórdica Canelada', cat:'renas', arq:'rena-nordica-canelada.zip', foto:'rena-nordica-canelada.webp', info:'Peça única · decoração', novo:true},
+  {nome:'Árvores Espirais Caneladas (15 cm)', cat:'arvore', arq:'arvore-espiral-15cm.zip', foto:'arvore-espiral-15cm.webp', info:'2 partes · decoração de mesa', novo:true},
+  {nome:'Árvore de Natal com Estrela', cat:'arvore', arq:'arvore-natal-estrela.zip', foto:'arvore-natal-estrela.webp', info:'Andares e estrela separados', novo:true},
+  {nome:'Gorro de Papai Noel Canelado', cat:'mesa', arq:'gorro-papai-noel-canelado.zip', foto:'gorro-papai-noel-canelado.webp', info:'Gorro, base e pompom', novo:true},
+  {nome:'Bandeja com Anjo e Casinhas', cat:'luminarias', arq:'deko-set-anjo-casinhas.zip', foto:'deko-set-anjo-casinhas.webp', info:'Casinhas para luz de LED', novo:true},
   {nome:'Feliz Natal com Floco de Neve (8 cm)', cat:'letreiros', arq:'feliz-natal-floco-8cm.zip', foto:'feliz-natal-floco-8cm.webp', info:'1 STL · imprime sem suporte', novo:true},
 ];
