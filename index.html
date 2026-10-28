@@ -84,6 +84,24 @@ h2{font-weight:900;font-size:clamp(24px,6.4vw,32px);line-height:1.15;margin:8px 
 .vplay span{width:86px;height:86px;border-radius:50%;background:#ff7a1a;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px #ff7a1a88}
 .vplay span:after{content:"";border-left:28px solid #1a0d02;border-top:17px solid transparent;border-bottom:17px solid transparent;margin-left:7px}
 .vplay small{position:absolute;top:calc(50% + 52px);left:0;right:0;text-align:center;color:#fff;font-weight:700;font-size:14px;text-shadow:0 2px 8px #000}
+.cz{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+.cz-in{background:#fff;border:2px solid var(--gold);border-radius:18px;padding:18px}
+.cz-t{font-weight:800;font-size:12px;letter-spacing:1.3px;text-transform:uppercase;color:var(--r);margin:4px 0 10px}
+.cz-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.cz-g label{display:flex;flex-direction:column;font-weight:600;font-size:13px;color:var(--ink);gap:5px}
+.cz-g .cz-w{grid-column:1/-1}
+.cz-g input{font:inherit;font-size:16px;font-weight:700;padding:11px 12px;border:1.5px solid #e6dcc6;border-radius:11px;background:var(--cream);color:var(--ink);width:100%;box-sizing:border-box}
+.cz-g input:focus{outline:none;border-color:var(--r);background:#fff;box-shadow:0 0 0 3px #d6283922}
+.cz-g label>span{min-height:3em;line-height:1.5;display:flex;align-items:flex-end}.cz-g .cz-w>span{min-height:0}
+.cz-g small{font-weight:400;font-size:11.5px;color:var(--muted)}
+.cz-out{background:var(--g);color:#fff;border-radius:18px;padding:18px;border:2px solid var(--gold);align-self:start;position:sticky;top:12px}
+.cz-out .r{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #ffffff26;font-size:14px}
+.cz-out .r span{color:#d7e5dc}.cz-out .r.tot{border-bottom:0;font-weight:800;font-size:15px}.cz-out .r.tot b{color:var(--gold)}
+.cz-l{margin:12px 0 2px;color:#d7e5dc;font-size:13.5px}.cz-l b{color:#fff}
+.cz-big{font-size:40px;font-weight:900;color:var(--gold);line-height:1.1}
+.cz-tot{margin-top:14px;background:#ffffff14;border-radius:12px;padding:12px;text-align:center;font-size:14px}.cz-tot b{color:var(--gold);font-size:17px}
+@media(max-width:720px){.cz{grid-template-columns:1fr}.cz-out{position:static}}
+@media(max-width:380px){.cz-g{grid-template-columns:1fr}}
 .cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
 /* bônus */
 .bonus{display:grid;gap:16px;margin-top:22px}
@@ -242,20 +260,64 @@ section+section{border-top:1px solid #f1ece2}
   </div>
 </section>
 
-<!-- CUSTO -->
+<!-- CUSTO: CALCULADORA -->
 <section style="padding-top:8px">
   <div class="w">
-    <div class="center"><div class="lbl">Na ponta do lápis</div><h2>Quanto custa imprimir uma peça?</h2></div>
-    <div class="calc">
-      <div class="row"><span>Enfeite com nome (≈15 g de PLA, rolo de R$ 100/kg)</span><b>R$ 1,50</b></div>
-      <div class="row"><span>Energia (≈40 min de impressão)</span><b>R$ 0,10</b></div>
-      <div class="row"><span>Fita e saquinho de embalagem</span><b>R$ 1,00</b></div>
-      <div class="row tot"><span>Custo total da peça</span><b>≈ R$ 2,60</b></div>
-      <div class="row sell"><span>Você define o preço de venda. Personalizado com nome costuma valer bem mais que o custo.</span></div>
+    <div class="center"><div class="lbl">Na ponta do lápis</div><h2>Quanto custa imprimir uma peça?</h2>
+    <p class="sub" style="text-align:center;color:var(--muted);margin:6px auto 18px;max-width:560px">Coloque os seus números e veja na hora o custo, o preço de venda e o lucro.</p></div>
+    <div class="cz">
+      <div class="cz-in">
+        <div class="cz-t">Filamento</div>
+        <div class="cz-g">
+          <label><span>Peso da peça (g)</span><input id="cPeso" type="number" inputmode="decimal" min="0" step="any" value="15"><small>O peso que o fatiador mostra</small></label>
+          <label><span>Preço do rolo de 1 kg (R$)</span><input id="cRolo" type="number" inputmode="decimal" min="0" step="any" value="100"><small>Quanto você pagou no rolo</small></label>
+        </div>
+        <div class="cz-t">Impressora e embalagem</div>
+        <div class="cz-g">
+          <label><span>Tempo de impressão (min)</span><input id="cTempo" type="number" inputmode="decimal" min="0" step="any" value="40"><small>Duração no fatiador</small></label>
+          <label><span>Custo da hora (R$)</span><input id="cHora" type="number" inputmode="decimal" min="0" step="any" value="0.5"><small>Energia + desgaste ≈ R$ 0,50</small></label>
+          <label><span>Embalagem (R$)</span><input id="cEmb" type="number" inputmode="decimal" min="0" step="any" value="1"><small>Fita, saquinho, tag</small></label>
+          <label><span>Reserva p/ falhas (%)</span><input id="cFalha" type="number" inputmode="decimal" min="0" step="any" value="10"><small>Recomendado: 10%</small></label>
+        </div>
+        <div class="cz-t">Venda</div>
+        <div class="cz-g">
+          <label><span>Lucro desejado (%)</span><input id="cLucro" type="number" inputmode="decimal" min="0" step="any" value="200"><small>Personalizado costuma ser 200%+</small></label>
+          <label><span>Taxa da plataforma (%)</span><input id="cTaxa" type="number" inputmode="decimal" min="0" max="90" step="any" value="0"><small>Shopee ≈ 20% · direta: 0</small></label>
+          <label class="cz-w"><span>Quantas peças pretende vender no Natal?</span><input id="cQtd" type="number" inputmode="numeric" min="0" step="1" value="50"></label>
+        </div>
+      </div>
+      <div class="cz-out" aria-live="polite">
+        <div class="cz-t" style="color:var(--gold)">Resultado na hora</div>
+        <div class="r"><span>Filamento</span><b id="oFil">–</b></div>
+        <div class="r"><span>Máquina e energia</span><b id="oMaq">–</b></div>
+        <div class="r"><span>Embalagem</span><b id="oEmb">–</b></div>
+        <div class="r"><span>Reserva para falhas</span><b id="oFal">–</b></div>
+        <div class="r tot"><span>Custo total da peça</span><b id="oCusto">–</b></div>
+        <div class="r" id="rTaxa" style="display:none"><span>Taxa da plataforma</span><b id="oTaxa">–</b></div>
+        <p class="cz-l">Preço sugerido de venda</p>
+        <div class="cz-big" id="oPreco">–</div>
+        <p class="cz-l">Lucro por peça: <b id="oLuc">–</b></p>
+        <div class="cz-tot">Vendendo <b id="oQ">50</b> peças, sobram <b id="oTotal">–</b> de lucro</div>
+      </div>
     </div>
-    <p class="cap">Valores de exemplo. Use o peso que o seu fatiador mostrar e os preços da sua região. O Guia Rápido (bônus) traz a conta completa.</p>
+    <p class="cap">É uma estimativa. Use o peso e o tempo que o seu fatiador mostrar e os preços da sua região. A mesma calculadora fica salva na sua área de membros.</p>
+    <div class="center" style="margin-top:18px"><a class="cta" href="#planos">Quero os arquivos e começar a vender</a></div>
   </div>
 </section>
+<script>(function(){
+var ids=['cPeso','cRolo','cTempo','cHora','cEmb','cFalha','cLucro','cTaxa','cQtd'];
+function n(id){var v=parseFloat(String(document.getElementById(id).value).replace(',','.'));return isFinite(v)&&v>0?v:0}
+function m(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function o(id,t){document.getElementById(id).textContent=t}
+function calc(){
+ var fil=n('cPeso')*n('cRolo')/1000,maq=n('cTempo')/60*n('cHora'),emb=n('cEmb'),fal=(fil+maq)*n('cFalha')/100,
+ custo=fil+maq+emb+fal,t=Math.min(n('cTaxa'),90)/100,preco=custo*(1+n('cLucro')/100)/(1-t),tx=preco*t,luc=preco-custo-tx,q=Math.round(n('cQtd'));
+ o('oFil',m(fil));o('oMaq',m(maq));o('oEmb',m(emb));o('oFal',m(fal));o('oCusto',m(custo));o('oTaxa',m(tx));
+ document.getElementById('rTaxa').style.display=t?'':'none';
+ o('oPreco',m(preco));o('oLuc',m(luc));o('oQ',q);o('oTotal',m(luc*q));
+}
+ids.forEach(function(i){document.getElementById(i).addEventListener('input',calc)});calc();
+})();</script>
 
 <!-- LICENÇA + COMPATIBILIDADE -->
 <section style="padding-top:8px">
