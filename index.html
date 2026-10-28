@@ -99,8 +99,9 @@ h2{font-weight:900;font-size:clamp(24px,6.4vw,32px);line-height:1.15;margin:8px 
 .cap{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
 /* bônus */
 .bonus{display:grid;gap:16px;margin-top:22px}
-.b{background:#ffffff0f;border:1.5px solid #ffffff26;border-radius:18px;padding:16px;display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
-.b img{width:120px}
+.b{background:#ffffff0f;border:1.5px solid #ffffff26;border-radius:18px;padding:12px 12px 16px;display:grid;grid-template-columns:1fr;gap:12px}
+.b img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block}
+.b>div{padding:0 4px}
 .b .tag{display:inline-block;background:var(--gold);color:var(--g);font-weight:900;font-size:11px;padding:3px 9px;border-radius:99px;letter-spacing:.8px}
 .b h3{margin:6px 0 4px;font-size:17px;font-weight:800}
 .b p{margin:0;font-size:13.5px;color:#d9e8de;line-height:1.5}
@@ -137,7 +138,7 @@ details[open] summary:after{content:"–"}
 details p{margin:0;padding:0 16px 16px;color:var(--muted);font-size:14.5px;line-height:1.6}
 footer{background:var(--g);color:#cfe0d5;text-align:center;font-size:12.5px;padding:30px 18px 36px;line-height:1.7}
 footer b{color:#fff}
-@media (min-width:900px){.w{max-width:720px}.cats{grid-template-columns:1fr 1fr 1fr}.plans{grid-template-columns:1fr 1fr;align-items:start}.b{grid-template-columns:150px 1fr}.b img{width:150px}}
+@media (min-width:900px){.w{max-width:720px}.cats{grid-template-columns:1fr 1fr 1fr}.plans{grid-template-columns:1fr 1fr;align-items:start}}
 
 
 
@@ -304,15 +305,15 @@ document.querySelectorAll('.sl input').forEach(function(e){e.addEventListener('i
   <div class="w" style="position:relative">
     <div class="center"><div class="lbl">Bônus</div><h2>5 bônus exclusivos do Pacote Completo</h2></div>
     <div class="bonus">
-      <div class="b"><img src="img/bonus-guia.webp" alt="Guia Rápido de Impressão 3D de Natal" loading="lazy">
+      <div class="b"><img src="img/bonus-guia.webp?v=2" alt="Guia Rápido de Impressão 3D de Natal" loading="lazy">
         <div><span class="tag">BÔNUS 1</span><h3>Guia Rápido de Impressão 3D</h3><p>Configurações por tipo de peça, impressão em 2 cores sem impressora multicor, pintura das figuras, solução de problemas e como calcular o preço de venda.</p></div></div>
-      <div class="b"><img src="img/bonus-catalogo.webp" alt="Catálogo visual com todas as peças" loading="lazy">
+      <div class="b"><img src="img/bonus-catalogo.webp?v=2" alt="Catálogo visual com todas as peças" loading="lazy">
         <div><span class="tag">BÔNUS 2</span><h3>Catálogo Visual em PDF</h3><p>Todas as 1000 peças com imagem, número e nome. Encontre rapidinho o arquivo que precisa e mostre aos seus clientes o que você imprime.</p></div></div>
-      <div class="b"><img src="img/bonus-legendas.webp" alt="Legendas e mensagens prontas para vender" loading="lazy">
+      <div class="b"><img src="img/bonus-legendas.webp?v=2" alt="Legendas e mensagens prontas para vender" loading="lazy">
         <div><span class="tag">BÔNUS 3</span><h3>Legendas e Mensagens Prontas</h3><p>Legendas para o Instagram, mensagens de WhatsApp para fechar a venda, respostas para quem acha caro e bio pronta. É só copiar e colar.</p></div></div>
-      <div class="b"><img src="img/bonus-etiquetas.webp" alt="Etiquetas e tags para imprimir" loading="lazy">
+      <div class="b"><img src="img/bonus-etiquetas.webp?v=2" alt="Etiquetas e tags para imprimir" loading="lazy">
         <div><span class="tag">BÔNUS 4</span><h3>Etiquetas e Tags para Imprimir</h3><p>Etiquetas de preço, tags de presente, cartões de cuidados e de agradecimento e adesivos. Sua peça entregue com cara de loja.</p></div></div>
-      <div class="b"><img src="img/bonus-calendario.webp" alt="Calendário de produção do Natal" loading="lazy">
+      <div class="b"><img src="img/bonus-calendario.webp?v=2" alt="Calendário de produção do Natal" loading="lazy">
         <div><span class="tag">BÔNUS 5</span><h3>Calendário de Produção do Natal</h3><p>O que fazer em cada semana até o dia 24, as datas que você não pode perder e folhas para controlar encomendas e estoque.</p></div></div>
     </div>
   </div>

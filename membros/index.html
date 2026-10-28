@@ -56,7 +56,7 @@ body.buscando .sec-mais{display:none}.sec-mais{margin:14px auto 0;display:block}
 .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
 .item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#222;display:block}
 .bimg{position:relative}.bimg img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#222;display:block}
-.bn .bimg img{object-fit:contain;background:#12301f;aspect-ratio:4/3}
+.bn .bimg img{object-fit:cover;aspect-ratio:3/2}
 .trav .bimg img{filter:grayscale(.6) brightness(.55)}
 .cad{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;text-shadow:0 4px 14px #000}
 .item .b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -193,7 +193,7 @@ var BONUS=[
  ['Etiquetas e Tags para Imprimir','Etiquetas de preço, tags "Para/De", cartões de cuidados e agradecimento, adesivos e cartões da ceia.','Bonus_4_Etiquetas_e_Tags_para_Imprimir.pdf','8 páginas'],
  ['Calendário de Produção do Natal','O que fazer em cada semana até o dia 24, datas-chave, controle de encomendas e estoque.','Bonus_5_Calendario_de_Producao_do_Natal.pdf','7 páginas']];
 V.bonus=function(){var ok=USER.plano==='completo';
- var cards=BONUS.map(function(x,i){return '<div class="item bn'+(ok?'':' trav')+'"><div class="bimg"><img src="/membros/fotos/bonus/b'+(i+1)+'.webp" alt="'+esc(x[0])+'" loading="lazy">'+(ok?'':'<span class="cad">🔒</span>')+'</div><div class="b"><div class="tags"><span class="tag">BÔNUS '+(i+1)+'</span><span class="ver">PDF · '+x[3]+'</span></div><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p>'+
+ var cards=BONUS.map(function(x,i){return '<div class="item bn'+(ok?'':' trav')+'"><div class="bimg"><img src="/membros/fotos/bonus/b'+(i+1)+'.webp?v=2" alt="'+esc(x[0])+'" loading="lazy">'+(ok?'':'<span class="cad">🔒</span>')+'</div><div class="b"><div class="tags"><span class="tag">BÔNUS '+(i+1)+'</span><span class="ver">PDF · '+x[3]+'</span></div><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p>'+
   (ok?'<a class="btn" href="'+dl('bonus/'+x[2])+'">⬇ Baixar PDF</a>':'<a class="btn ghost" href="'+UPGRADE+'" target="_blank" rel="noopener">🔒 Liberar bônus</a>')+'</div></div>'}).join('');
  if(ok)return head('Bônus','Seus bônus 🎁','Os 5 materiais extras do Pacote Completo. Baixe e use à vontade.')+'<div class="items">'+cards+'</div>';
  return head('Bônus','Bônus do Pacote Completo 🎁','Seu plano atual é o Básico.')+
