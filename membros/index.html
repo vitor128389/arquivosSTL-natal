@@ -110,7 +110,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 <script src="/membros/reveillon.js?v=1"></script>
 <script>
 window.CATEGORIAS=window.CATEGORIAS||[];window.ITENS=window.ITENS||[];window.SECOES=window.SECOES||[];window.PACK=window.PACK||[];
-var PAGES=[['comece','📌','Comece aqui'],['guia','🎓','Guia do Iniciante'],['arquivos','📦','Arquivos STL'],['calc','🧮','Calculadora'],['painel','📈','Painel de vendas'],['bonus','🎁','Bônus'],['licenca','🛡️','Licença de uso'],['suporte','✉️','Suporte']];
+var PAGES=[['comece','📌','Comece aqui'],['guia','🎓','Guia do Iniciante'],['arquivos','📦','Arquivos STL'],['calc','🧮','Calculadora'],['painel','📈','Painel de vendas'],['bonus','🎁','Bônus'],['loja','⭐','Adicionais'],['licenca','🛡️','Licença de uso'],['suporte','✉️','Suporte']];
 var SUP='digitalsuporte38@gmail.com';
 function $(s){return document.querySelector(s)}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -149,7 +149,8 @@ function cardP(i){var ok=temPack(i);return '<div class="item'+(ok?'':' trav')+'"
 function secoes(){if(!PACK.length)return '';return secRV()+(USER.plano==='completo'?'':'<div class="box hl" style="margin-top:30px"><h2>🔒 Pack +1000 arquivos · Pacote Completo</h2><p>As seções abaixo fazem parte do Pacote Completo, junto com os 5 bônus. Faça o upgrade com o mesmo e-mail da compra e o download é liberado aqui na hora.</p><div style="margin-top:14px"><a class="btn" href="'+UPGRADE+'" target="_blank" rel="noopener">Liberar o pack +1000 e os bônus</a></div>'+(tem('nomes')?'<p class="hint" style="margin-top:8px">✅ Seu adicional <b>Enfeites com Nome</b> já está liberado abaixo.</p>':'')+'</div>')+SECOES.map(function(s){var its=PACK.filter(function(i){return i.s===s.id});if(!its.length)return '';
  return '<div class="sec" id="sec-'+s.id+'"><div class="sec-h"><h2>'+s.ico+' '+esc(s.nome)+' <small>'+its.length+' arquivos</small></h2></div><div class="items">'+its.map(cardP).join('')+'</div>'+(its.length>12?'<button class="btn sec-mais" onclick="this.parentNode.classList.add(\'aberta\');this.remove()">Ver todos os '+its.length+'</button>':'')+'</div>'}).join('')}
 function card(i){var href=i.link||dl('arquivos/'+i.arq);var at=i.link?' target="_blank" rel="noopener"':'';
- return '<div class="item" data-n="'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>Acesso ao arquivo</a></div></div>'}
+ if(USER.plano==='adicional')return '<div class="item trav" data-n="'+esc(i.nome.toLowerCase())+'"><div class="bimg"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><span class="cad">🔒</span></div><div class="b"><h3>'+esc(i.nome)+'</h3><a class="btn ghost" href="'+BASICO+'" target="_blank" rel="noopener">🔒 Pack Natal 3D</a></div></div>';
+ return '<div class="item" data-n=""'+esc(i.nome.toLowerCase())+'"><img src="/membros/fotos/'+esc(i.foto)+'" alt="'+esc(i.nome)+'" loading="lazy"><div class="b"><div class="tags">'+(i.novo?'<span class="tag">✨ NOVO</span>':'')+'<span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.nome)+'</h3>'+(i.info?'<p>'+esc(i.info)+'</p>':'')+'<a class="btn" href="'+esc(href)+'"'+at+'>Acesso ao arquivo</a></div></div>'}
 function cardRV(i){return '<div class="item" data-n="'+esc(i.n.toLowerCase())+'"><div class="bimg"><img src="/membros/fotos/reveillon/'+esc(i.f)+'.webp" alt="'+esc(i.n)+'" loading="lazy" style="object-fit:contain;background:#14301f"></div><div class="b"><div class="tags"><span class="tag">✨ NOVO</span><span class="ver">✓ PRONTO P/ FATIAR</span></div><h3>'+esc(i.n)+'</h3><a class="btn" href="'+esc(dl('reveillon/'+i.f+'.zip'))+'">Baixar arquivo</a></div></div>'}
 function secRV(){if(!tem('reveillon')||!window.RV)return '';return '<div class="sec" id="sec-reveillon"><div class="sec-h"><h2>🥂 Pack Réveillon 2027 <small>'+RV.length+' arquivos · adicional</small></h2></div><div class="items">'+RV.map(cardRV).join('')+'</div></div>'}
 function filtra(){var q=$('#q').value.toLowerCase();document.querySelectorAll('#its .item').forEach(function(e){e.style.display=e.dataset.n.indexOf(q)>-1?'':'none'});
@@ -217,6 +218,15 @@ V.licenca=function(){return head('Licença de uso','O que você pode fazer','Lei
 '<div class="grid g2"><div class="box"><h2>✅ Pode</h2><ul style="padding-left:18px"><li>Imprimir as peças quantas vezes quiser</li><li>Vender as peças impressas na sua loja, Instagram, feiras ou sob encomenda</li><li>Personalizar com nomes e cores</li></ul></div><div class="box"><h2>❌ Não pode</h2><ul style="padding-left:18px"><li>Revender, enviar ou compartilhar os arquivos digitais (STL, 3MF, ZIP)</li><li>Colocar os arquivos em grupos, sites ou outros packs</li></ul></div></div>'+
 '<div class="tip">Quando um modelo tiver uma licença própria do criador, ela vem indicada no card do arquivo e deve ser respeitada.</div>'};
 
+var LOJA=[
+ {k:'upgrade',t:'Pacote Completo',d:'+1000 arquivos STL de Natal e os 5 bônus (guia, catálogo, legendas, etiquetas e calendário).',p:'R$ 17,90',u:UPGRADE,img:'/membros/fotos/bonus/b2.webp?v=2',tem:function(){return USER.plano==='completo'},ir:'#arquivos'},
+ {k:'nomes',t:'Pack Enfeites com Nome',d:'200 enfeites para personalizar com o nome do cliente. O personalizado é o que mais vende no Natal.',p:'R$ 9,90',u:'https://pay.wiapy.com/MN1ZP-EMxdRm',img:'/membros/fotos/loja/nomes.webp',tem:function(){return USER.plano==='completo'||tem('nomes')},ir:'#arquivos'},
+ {k:'reveillon',t:'Pack Réveillon 2027',d:'25 modelos de Ano Novo: letreiros, topos de bolo, marcadores de taça, porta-copos, chaveiros e mais.',p:'R$ 12,90',u:'https://pay.wiapy.com/HKq75blXc3Oz',img:'/membros/fotos/loja/reveillon.webp',tem:function(){return tem('reveillon')},ir:'#arquivos'},
+ {k:'planilha',t:'Planilha de Precificação e Encomendas',d:'Calcule o preço certo e controle pedidos, pagamentos e estoque. Excel e Google Planilhas.',p:'R$ 7,90',u:'https://pay.wiapy.com/qcMcf4swYTes',img:'/membros/fotos/loja/planilha.webp',tem:function(){return tem('planilha')},ir:'#bonus'},
+ {k:'kit',t:'Kit Divulgação de Natal',d:'Legendas e mensagens prontas para vender + etiquetas e tags para imprimir.',p:'R$ 7,90',u:'https://pay.wiapy.com/agx8lCEU0Imf',img:'/membros/fotos/loja/kit.webp',tem:function(){return USER.plano==='completo'||tem('kit')},ir:'#bonus'}];
+V.loja=function(){var cards=LOJA.map(function(x){var ok=x.tem();return '<div class="item bn'+(ok?'':' trav')+'"><div class="bimg"><img src="'+x.img+'" alt="'+esc(x.t)+'" loading="lazy" style="object-fit:contain;background:#12301f">'+(ok?'':'<span class="cad">🔒</span>')+'</div><div class="b"><div class="tags">'+(ok?'<span class="ver">✓ LIBERADO</span>':'<span class="tag">'+x.p+'</span>')+'</div><h3>'+esc(x.t)+'</h3><p>'+esc(x.d)+'</p>'+
+  (ok?'<a class="btn" href="'+x.ir+'">Ver no menu</a>':'<a class="btn" href="'+x.u+'" target="_blank" rel="noopener">🔓 Liberar por '+x.p+'</a>')+'</div></div>'}).join('');
+ return head('Loja','Adicionais ⭐','Complete seu pack. Use o <b>mesmo e-mail da sua compra</b> e o conteúdo é liberado aqui na hora.')+'<div class="items">'+cards+'</div><p class="hint" style="margin-top:14px">Depois de pagar, atualize esta página. Se não liberar em alguns minutos, fale com o suporte.</p>'};
 V.suporte=function(){return head('Suporte','Precisa de ajuda? ✉️','A gente responde em até 1 dia útil.')+
 '<div class="box"><h2>Fale com a gente</h2><p>Mande um e-mail para <b>'+SUP+'</b> com o nome do arquivo e, se puder, uma foto do problema.</p><div style="margin-top:14px"><a class="btn" href="mailto:'+SUP+'?subject=Suporte%20Natal%203D">Enviar e-mail</a></div></div>'+
 '<div class="box"><h3>Antes de mandar, confira</h3><ul style="padding-left:18px;color:#c9c9d2"><li>Você extraiu o ZIP antes de abrir? (botão direito → Extrair)</li><li>Está abrindo no computador, num fatiador?</li><li>Veja o <a href="#guia" style="color:var(--or)">Guia do Iniciante</a>, Passo 5.</li></ul></div>'};
@@ -226,7 +236,7 @@ function render(){var p=(location.hash||'#comece').slice(1);if(!V[p])p='comece';
  $('#nav').innerHTML=PAGES.map(function(x){return '<a href="#'+x[0]+'" class="'+(x[0]===p?'on':'')+'" onclick="$(\'#side\').classList.remove(\'open\')"><span class="i">'+x[1]+'</span>'+x[2]+'</a>'}).join('');
  $('#main').innerHTML=V[p]();window.scrollTo(0,0)}
 var API='https://skpmowhjzlosnoyzlsnz.supabase.co/functions/v1/membros';
-var UPGRADE='https://pay.wiapy.com/jRt6lwSTIArQ';
+var UPGRADE='https://pay.wiapy.com/jRt6lwSTIArQ';var BASICO='https://pay.wiapy.com/tXers3QVW5Mx';
 var TOKEN=null,USER={},MEM={};
 function tok(v){try{if(v===undefined)return localStorage.getItem('n3d_tok');if(v===null)localStorage.removeItem('n3d_tok');else localStorage.setItem('n3d_tok',v)}catch(e){if(v===undefined)return MEM.t;MEM.t=v}}
 function dl(f){return API+'/download?f='+encodeURIComponent(f)+'&t='+encodeURIComponent(TOKEN||'')}
@@ -239,7 +249,7 @@ function entrar(ev){ev.preventDefault();var e=$('#em').value.trim();$('#be').tex
   if(d.ok){TOKEN=d.token;tok(d.token);USER=d;abrir()}else{$('#be').textContent='Entrar';$('#er').textContent=d.erro||'Não foi possível entrar.'}
  }).catch(function(){$('#be').textContent='Entrar';$('#er').textContent='Sem conexão. Tente de novo.'})}
 function sair(){tok(null);TOKEN=null;USER={};location.hash='';telaLogin()}
-function abrir(){$('#login').style.display='none';$('#app').style.display='';$('#quem').textContent=USER.email+' · plano '+(USER.plano==='completo'?'Completo':'Básico');render()}
+function abrir(){$('#login').style.display='none';$('#app').style.display='';$('#quem').textContent=USER.email+' · plano '+(USER.plano==='completo'?'Completo':USER.plano==='adicional'?'Adicionais':'Básico');render()}
 window.addEventListener('hashchange',function(){if(TOKEN)render()});
 (function(){TOKEN=tok();if(!TOKEN){telaLogin();return}
  fetch(API+'/me',{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){return r.json()}).then(function(d){if(d.ok){USER=d;abrir()}else{tok(null);TOKEN=null;telaLogin('Sua sessão expirou. Entre de novo.')}}).catch(function(){telaLogin('Sem conexão. Tente de novo.')})})();
