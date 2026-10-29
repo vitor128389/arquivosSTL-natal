@@ -218,6 +218,7 @@ V.licenca=function(){return head('Licença de uso','O que você pode fazer','Lei
 '<div class="grid g2"><div class="box"><h2>✅ Pode</h2><ul style="padding-left:18px"><li>Imprimir as peças quantas vezes quiser</li><li>Vender as peças impressas na sua loja, Instagram, feiras ou sob encomenda</li><li>Personalizar com nomes e cores</li></ul></div><div class="box"><h2>❌ Não pode</h2><ul style="padding-left:18px"><li>Revender, enviar ou compartilhar os arquivos digitais (STL, 3MF, ZIP)</li><li>Colocar os arquivos em grupos, sites ou outros packs</li></ul></div></div>'+
 '<div class="tip">Quando um modelo tiver uma licença própria do criador, ela vem indicada no card do arquivo e deve ser respeitada.</div>'};
 
+var UPGRADE='https://pay.wiapy.com/jRt6lwSTIArQ';var BASICO='https://pay.wiapy.com/tXers3QVW5Mx';
 var LOJA=[
  {k:'upgrade',t:'Pacote Completo',d:'+1000 arquivos STL de Natal e os 5 bônus (guia, catálogo, legendas, etiquetas e calendário).',p:'R$ 17,90',u:UPGRADE,img:'/membros/fotos/bonus/b2.webp?v=2',tem:function(){return USER.plano==='completo'},ir:'#arquivos'},
  {k:'nomes',t:'Pack Enfeites com Nome',d:'200 enfeites para personalizar com o nome do cliente. O personalizado é o que mais vende no Natal.',p:'R$ 9,90',u:'https://pay.wiapy.com/MN1ZP-EMxdRm',img:'/membros/fotos/loja/nomes.webp',tem:function(){return USER.plano==='completo'||tem('nomes')},ir:'#arquivos'},
