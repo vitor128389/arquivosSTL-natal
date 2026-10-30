@@ -30,7 +30,8 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 .w{max-width:560px;margin:0 auto;padding:0 18px}
-.top{background:var(--r);color:#fff;text-align:center;font-weight:600;font-size:13px;padding:9px 12px;letter-spacing:.2px}
+.top{position:sticky;top:0;z-index:50;background:var(--r);color:#fff;text-align:center;font-weight:700;font-size:13px;padding:9px 12px;letter-spacing:.2px;box-shadow:0 2px 8px #0003}
+.top .cd{display:inline-block;background:#fff;color:var(--r);border-radius:6px;padding:1px 8px;margin:0 2px;font-weight:800;min-width:26px}
 section{padding:48px 0}
 .dark{background:radial-gradient(1200px 500px at 50% -10%,#245d3b 0%,var(--g) 55%);color:#fff;position:relative;overflow:hidden}
 .snow:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff22 1.5px,transparent 1.6px),radial-gradient(#ffffff18 1px,transparent 1.2px);background-size:46px 46px,23px 23px;background-position:0 0,11px 17px;pointer-events:none}
@@ -211,7 +212,8 @@ section+section{border-top:1px solid #f1ece2}
 </style>
 </head>
 <body>
-<div class="top">🎄 Oferta de Natal · A partir de R$ 9,90 · Pagamento único</div>
+<div class="top">🎄 Faltam <b class="cd" id="cdN">56</b> <span id="cdL">dias</span> pro Natal · imprima agora</div>
+<script>(function(){var n=new Date(),y=n.getFullYear(),x=new Date(y,11,25);if(n>new Date(y,11,25,23,59))x=new Date(y+1,11,25);var d=Math.ceil((x-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);var e=document.getElementById('cdN'),l=document.getElementById('cdL');if(d<=0){e.parentNode.innerHTML='🎄 É Natal! · Pack com acesso imediato';return}e.textContent=d;l.textContent=d==1?'dia':'dias'})()</script>
 
 <!-- HERO -->
 <section class="dark snow" style="padding-top:34px">
