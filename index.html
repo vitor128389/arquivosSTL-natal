@@ -192,6 +192,15 @@ footer b{color:#fff}
 .last p{color:#d9e8de;max-width:480px;margin:0 auto 20px;line-height:1.55}
 .last-s{font-size:12.5px;color:#cfe0d5;margin-top:12px}
 
+.lic{display:block!important;max-width:520px;margin:14px auto 0;background:#e9f7ee;border:1.5px solid #2f9e5a;border-radius:14px;padding:11px 14px;font-size:14px;color:#1b4d2e;text-align:center;line-height:1.45}.lic b{display:block;font-size:16px;color:#167a3e;margin-bottom:2px}
+.t6{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:860px;margin:0 auto}
+.t6c{background:#fff;border:1.5px solid #eadfca;border-radius:16px;overflow:hidden;box-shadow:0 6px 18px #0000000d}
+.t6c img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:#12301f}
+.t6c div{padding:10px 12px 12px}.t6c b{display:block;color:var(--g);font-size:15px;line-height:1.25}.t6c span{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;margin-top:3px}
+@media(max-width:640px){.t6{grid-template-columns:1fr 1fr;gap:10px}.t6c b{font-size:14px}}
+.cz-t{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#ffffff14;border-radius:12px;padding:4px;margin:4px 0 14px}
+.cz-t button{border:0;border-radius:9px;padding:9px 6px;font:inherit;font-size:13px;font-weight:700;background:transparent;color:#d7e5dc;cursor:pointer}
+.cz-t button.on{background:var(--gold);color:var(--g)}
 /* ===== fundo branco (rodapé continua verde) ===== */
 body{background:#fff}
 .dark{background:#fff;color:var(--ink)}
@@ -226,6 +235,7 @@ section+section{border-top:1px solid #f1ece2}
       <div class="hp-p"><span>A PARTIR DE</span><b><small>R$</small>9,90</b><em>pagamento único · acesso na hora</em></div>
       <ul class="hp-l"><li>+1000 arquivos de Natal organizados</li><li>Figuras 3D e presépio completo</li><li>Funciona em qualquer impressora 3D</li><li>Pode vender todas as peças impressas</li></ul>
     </div>
+    <div class="lic"><b>✅ Liberado para vender</b>Imprima e venda na Shopee, no Mercado Livre ou por encomenda, sem precisar pedir licença pra ninguém.</div>
     <a class="cta pulse" href="#planos">Quero começar a imprimir e vender</a>
     <div class="hs"><div><b>+1000</b><span>arquivos de Natal</span></div><div><b>15</b><span>categorias</span></div><div><b>7 dias</b><span>de garantia</span></div></div>
   </div>
@@ -257,6 +267,16 @@ section+section{border-top:1px solid #f1ece2}
   <div class="w">
     <p class="cap">Imagens ilustrativas. A cor e o acabamento finais dependem do filamento, da impressora e da pintura.</p>
     <a class="cta" href="#planos" style="margin-top:22px">Quero meu pack de Natal</a>
+  </div>
+</section>
+
+<!-- OS QUE MAIS VENDEM -->
+<section class="top6">
+  <div class="w">
+    <div class="center"><div class="lbl">Direto ao ponto</div><h2>Os que mais vendem no Natal</h2>
+    <p style="text-align:center;color:var(--muted);margin:6px auto 18px;max-width:560px">Os mesmos tipos de peça que aparecem entre os mais vendidos de Natal nos marketplaces. Todos estão no pack.</p></div>
+    <div class="t6"><div class="t6c"><img src="img/top/presepio.webp" width="300" height="300" alt="Presépio completo" loading="lazy"><div><b>Presépio completo</b><span>10 peças: estábulo, Sagrada Família, reis magos e animais</span></div></div><div class="t6c"><img src="img/top/letreiro.webp" width="300" height="300" alt="Letreiros de Natal" loading="lazy"><div><b>Letreiros de Natal</b><span>50 modelos: Feliz Natal, Boas Festas, Ho Ho Ho…</span></div></div><div class="t6c"><img src="img/top/cortador.webp" width="300" height="300" alt="Cortadores de biscoito" loading="lazy"><div><b>Cortadores de biscoito</b><span>95 formatos, do mini ao grande</span></div></div><div class="t6c"><img src="img/top/luminaria.webp" width="300" height="300" alt="Luminárias e porta-velas LED" loading="lazy"><div><b>Luminárias e porta-velas LED</b><span>40 modelos pra acender com velinha LED</span></div></div><div class="t6c"><img src="img/top/rena.webp" width="300" height="300" alt="Renas e figuras 3D" loading="lazy"><div><b>Renas e figuras 3D</b><span>35 figuras: rena, Papai Noel, anjo, boneco de neve</span></div></div><div class="t6c"><img src="img/top/nome.webp" width="300" height="300" alt="Enfeites com nome" loading="lazy"><div><b>Enfeites com nome</b><span>200 nomes prontos — o personalizado que mais sai</span></div></div></div>
+    <div class="center" style="margin-top:20px"><a class="cta" href="#planos">Quero esses arquivos</a></div>
   </div>
 </section>
 
@@ -292,16 +312,17 @@ section+section{border-top:1px solid #f1ece2}
     <div class="center"><div class="lbl">Na ponta do lápis</div><h2>Quanto sobra em cada peça?</h2>
     <p style="text-align:center;color:var(--muted);margin:6px auto 18px;max-width:560px">Arraste os controles e veja o seu lucro. Na área de membros tem a calculadora completa, com energia, embalagem e taxas.</p></div>
     <div class="cz">
+      <div class="cz-t" role="group" aria-label="Onde vai vender"><button type="button" class="on" data-m="0">Encomenda / Instagram</button><button type="button" data-m="1">Shopee</button></div>
       <div class="sl"><div class="sl-h"><span>Peso da peça</span><b id="vPeso"></b></div><input type="range" id="sPeso" min="5" max="200" step="1" value="20"></div>
       <div class="sl"><div class="sl-h"><span>Preço do rolo de 1 kg</span><b id="vRolo"></b></div><input type="range" id="sRolo" min="50" max="250" step="5" value="100"></div>
       <div class="sl"><div class="sl-h"><span>Preço de venda da peça</span><b id="vVenda"></b></div><input type="range" id="sVenda" min="3" max="100" step="1" value="15"></div>
       <div class="sl"><div class="sl-h"><span>Peças vendidas no Natal</span><b id="vQtd"></b></div><input type="range" id="sQtd" min="5" max="300" step="5" value="50"></div>
       <div class="cz-r">
-        <div class="cz-c"><small>Custo de filamento por peça</small><b id="oCusto"></b></div>
+        <div class="cz-c"><small id="lCusto">Custo de filamento por peça</small><b id="oCusto"></b></div>
         <div class="cz-c"><small>Lucro por peça</small><b id="oLuc"></b></div>
       </div>
-      <div class="cz-m"><small>Lucro no Natal (só filamento)</small><b id="oTot"></b></div>
-      <p class="cz-n">Simulação. Não inclui energia, embalagem e taxa de marketplace. A calculadora da área de membros inclui tudo isso.</p>
+      <div class="cz-m"><small>Lucro no Natal</small><b id="oTot"></b></div>
+      <p class="cz-n" id="nota"></p>
     </div>
     <div class="center" style="margin-top:20px"><a class="cta" href="#planos">Quero começar a vender</a></div>
   </div>
@@ -310,8 +331,12 @@ section+section{border-top:1px solid #f1ece2}
 function g(i){return document.getElementById(i)}
 function m(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
 function paint(e){var p=(e.value-e.min)/(e.max-e.min)*100;e.style.setProperty('--p',p+'%')}
+var SH=0;
+document.querySelectorAll('.cz-t button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.cz-t button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');SH=+b.dataset.m;calc()})});
 function calc(){var peso=+g('sPeso').value,rolo=+g('sRolo').value,venda=+g('sVenda').value,q=+g('sQtd').value;
- var c=peso*rolo/1000,l=venda-c;
+ var fil=peso*rolo/1000,tx=SH?venda*0.20+Math.min(4,venda*0.5):0,c=fil+tx,l=venda-c;
+ g('lCusto').textContent=SH?'Filamento + taxa Shopee por peça':'Custo de filamento por peça';
+ g('nota').textContent=SH?'Simulação com a taxa da Shopee para CNPJ em peças até R$ 79,99 (20% + até R$ 4 por item; vendedor CPF paga mais R$ 3). Taxas mudam, confira no seu painel. Não inclui energia e embalagem.':'Simulação de venda direta (encomenda, Instagram, WhatsApp), sem taxa de marketplace. Não inclui energia e embalagem. A calculadora da área de membros inclui tudo isso.';
  g('vPeso').textContent=peso+' g';g('vRolo').textContent=m(rolo);g('vVenda').textContent=m(venda);g('vQtd').textContent=q;
  g('oCusto').textContent=m(c);g('oLuc').textContent=m(l);g('oTot').textContent=m(l*q);
  g('oLuc').style.color=g('oTot').style.color=l<0?'#ff8a8a':'';
